@@ -1,0 +1,6 @@
+*.o
+/.vscode
+*.a
+lem-in
+/a.out
+/*.dSYM
