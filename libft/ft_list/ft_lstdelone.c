@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 15:42:42 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/07 12:16:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/09 19:59:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_list					*ft_lstdelone(t_list *head, t_list *dellist)
 {
 	t_list				*tmp;
 	t_list				*lst;
+	void			(*delfunc)(t_list *list);
 
 	if (dellist == NULL)
 		return (NULL);
@@ -24,7 +25,8 @@ t_list					*ft_lstdelone(t_list *head, t_list *dellist)
 	if (tmp == lst)
 	{
 		head = head->next;
-		default_lstdel(lst);
+		delfunc = lst->delfunc;
+		delfunc(lst);
 		lst = head;
 		return (lst);
 	}
@@ -34,6 +36,7 @@ t_list					*ft_lstdelone(t_list *head, t_list *dellist)
 			tmp = tmp->next;
 		tmp->next = lst->next;
 	}
-	default_lstdel(lst);
+	delfunc = lst->delfunc;
+	delfunc(lst);
 	return (head);
 }

@@ -6,23 +6,16 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:38:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/07 12:16:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/09 19:58:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void					default_lstdel(t_list *list)
-{
-	list->next = NULL;
-	ft_strdel(&(list->content));
-	free(list);
-	list = NULL;
-}
-
 void					ft_lstdel(t_list **head)
 {
 	t_list				*tmp;
+	void				(*delfunc)(t_list *list);
 
 	if (*head == NULL)
 		return ;
@@ -33,5 +26,6 @@ void					ft_lstdel(t_list **head)
 			return ;
 		tmp = (*head);
 	}
-	default_lstdel(*head);
+	delfunc = (*head)->delfunc;
+	delfunc(*head);
 }

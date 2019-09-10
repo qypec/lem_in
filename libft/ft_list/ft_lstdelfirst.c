@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:30:22 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/09 16:38:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/09 19:58:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 void				ft_lstdelfirst(t_list **head)
 {
 	t_list			*tmp;
+	void			(*delfunc)(t_list *list);
 
 	if (head == NULL)
 		return ;
 	tmp = *head;
 	(*head) = (*head)->next;
-	default_lstdel(tmp);
+	delfunc = tmp->delfunc;
+	delfunc(tmp);
 }
