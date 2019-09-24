@@ -5,22 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 17:18:00 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/08 19:54:25 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/18 11:34:56 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/25 00:31:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_map.h"
 #include "libft.h"
+#include "ft_map.h"
 
-void					ft_mapdel(t_map **map)
+void				ft_mapdel(t_map **map)
 {
-	int					i;
+	size_t			i;
 
 	i = 0;
 	while (i < (*map)->size)
-		ht_listdel(&((*map)->head[i++]));
-	free((*map)->head);
+		ft_mapdelind(map, i++);
+	free((*map)->array);
+	(*map)->array = NULL;
+	(*map)->size = 0;
+	(*map)->valuedel_func = NULL;
 	free(*map);
-	map = NULL;
+	*map = NULL;
 }

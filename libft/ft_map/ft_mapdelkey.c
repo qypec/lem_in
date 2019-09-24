@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mapinsert.c                                     :+:      :+:    :+:   */
+/*   ft_mapdelkey.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 19:15:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/18 13:56:34 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/18 19:20:57 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/18 20:02:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_map.h"
 
-void				ft_mapinsert(t_map *map, const char *key, void *value)
+static void			dellst(void *content, size_t content_size)
 {
-	t_list			**maplst;
-	void			(*valuedel)(void **);
+	ft_strdel(&(((t_htab *)content)->key));
+	content_size = 0;
+	free(content);
+	content = NULL;
+}
 
-	maplst = &(map->array[hashfunction(key, map->size)]);
+void				ft_mapdelkey(t_map **map, const char *key)
+{
+	void			(*valuedel)(void **);
+	t_list			**maplst;
+	t_list			*tmp;
+
+	maplst = &((*map)->array[hashfunction(key, (*map)->size)]);
+	valuedel = (*map)->valuedel_func;
 	while (*maplst != NULL)
 	{
 		if (ft_strequ(((t_htab *)((*maplst)->content))->key, key))
 		{
-			valuedel = map->valuedel_func;
 			valuedel(&(((t_htab *)((*maplst)->content))->value));
-			((t_htab *)((*maplst)->content))->value = value;
+			tmp = (*maplst)->next;
+			ft_lstdelone(maplst, dellst);
+			*maplst = tmp;
 			return ;
 		}
 		maplst = &(*maplst)->next;
 	}
-	*maplst = ft_lstnew(init_htab(key, value), sizeof(t_htab *));
 }

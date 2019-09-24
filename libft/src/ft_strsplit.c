@@ -3,65 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 14:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/31 16:15:02 by qypec            ###   ########.fr       */
+/*   Updated: 2019/09/18 15:43:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t			get_height(const char *str, char c)
+size_t				get_split_len(const char *s, int c)
 {
-	size_t				height;
+	size_t			len;
 
-	height = 0;
-	while (*str != '\0')
+	len = 0;
+	while (*s != '\0')
 	{
-		if (*str == c)
-			height++;
-		str++;
+		if (*s == c)
+			len++;
+		s++;
 	}
-	return (height + 1);
+	return (len + 1);
 }
 
-static const char		*ft_str_find_next(const char *str, char c, int skip)
+char				**ft_strsplit(char const *s, char c)
 {
-	if (skip)
-		while (*str != '\0' && *str == c)
-			str++;
-	else
-		while (*str != '\0' && *str != c)
-			str++;
-	return (str);
-}
+	char			**matr;
+	const char 		*c_ptr;
+	size_t			len;
+	size_t			i;
 
-char					**ft_strsplit(char const *str, char c)
-{
-	char		**ret;
-	int			i;
-	const char	*next;
-
-	if (str == NULL)
-		return (NULL);
-	ret = (char**)malloc(sizeof(char*) * (get_height((char *)str, c) + 1));
-	if (ret == NULL)
+	if ((matr = (char **)ft_matrmemalloc(sizeof(char *) * \
+								(get_split_len(s, c) + 1))) == NULL)
 		return (NULL);
 	i = 0;
-	while (*str != '\0')
+	while (*s != '\0')
 	{
-		str = ft_str_find_next(str, c, 1);
-		if (*str != '\0')
-		{
-			next = ft_str_find_next(str, c, 0);
-			ret[i] = ft_strsub(str, 0, next - str);
-			if (ret[i] == NULL)
-				return (ft_matrdel(&ret));
-			i++;
-			str = next;
-		}
+		if ((c_ptr = ft_strchr(s, c)) == NULL)
+			len = ft_strlen(s);
+		else
+			len = c_ptr - s;
+		if ((matr[i] = ft_strnew(sizeof(char) * (len + 1))) == NULL)
+			return (ft_matrdel(&matr));
+		ft_memcpy(matr[i++], s, len);
+		(s[len] == '\0') ? (s += len) : (s += len + 1);
 	}
-	ret[i] = 0;
-	return (ret);
+	return (matr);
 }

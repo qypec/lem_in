@@ -6,27 +6,25 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 16:39:30 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/13 15:24:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *str, const char *tail, size_t n)
+char				*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	size_t			i;
+	size_t			j;
 
 	i = 0;
-	j = ft_strlen(str);
-	while (i < n)
+	j = ft_strlen(s1);
+	while (s2[i] != '\0' && i < n)
 	{
-		if (tail[i] == '\0')
-			break ;
-		str[j] = tail[i];
+		s1[j] = s2[i];
 		i++;
 		j++;
 	}
-	str[j] = '\0';
-	return (str);
+	s1[j] = '\0';
+	return (s1);
 }

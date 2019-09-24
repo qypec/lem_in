@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelthis.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 20:44:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/20 16:08:09 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/17 10:04:21 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/17 10:45:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_strstr(const char *haystack, const char *needle)
+void				ft_lstdelthis(t_list **alst, size_t lstnum, \
+											void (*del)(void *, size_t))
 {
-	size_t			i;
-	const char		*tmp;
+	t_list			*tmp;
 
-	while (*haystack != '\0')
+	while (*alst != NULL && lstnum)
 	{
-		i = 0;
-		tmp = haystack;
-		while (*(tmp++) == needle[i])
-			i++;
-		if (needle[i] == '\0')
-			return ((char *)haystack);
-		haystack++;
+		alst = &(*alst)->next;
+		lstnum--;
 	}
-	return (NULL);
+	if (lstnum == 0 && *alst != NULL)
+	{
+		tmp = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = tmp;
+	}
 }

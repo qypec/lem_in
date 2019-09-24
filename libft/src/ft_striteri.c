@@ -6,19 +6,19 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:53:46 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:16:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void				ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int i;
+	size_t			i;
 
-	i = 0;
 	if (!s || !f)
 		return ;
+	i = 0;
 	while (s[i] != '\0')
 	{
 		f(i, &s[i]);

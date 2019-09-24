@@ -6,15 +6,15 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 14:33:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:51:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isspace(int c)
+int					ft_isspace(int c)
 {
-	if (c == 9 || c == 32)
+	if (c == '\t' || c == '\n' || c == ' ')
 		return (1);
 	return (0);
 }

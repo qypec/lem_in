@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/10 11:40:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 00:32:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,23 @@ void					free_uctime(t_cdate *date);
 typedef struct			s_list
 {
 	void				*content;
-	void				*delfunc;
+	size_t				content_size;
 	struct s_list		*next;
 }						t_list;
 
-void					ft_lstdel(t_list **head);
-t_list					*ft_lstdelone(t_list *head, t_list *dellist);
-void					ft_lstdelfirst(t_list **head);
+t_list					*ft_lstnew(void *content, size_t content_size);
 void					ft_lstadd(t_list **alst, t_list *new);
-void					ft_lstpushback(t_list **head, t_list *new);
-t_list					*ft_lstnew(const void *content, void *delfunc);
-int						ft_listsize(t_list *head);
+void					ft_lstaddhere(t_list **alst, t_list *new, size_t position);
+void					ft_lstpushback(t_list **alst, t_list *new);
+void					ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void					ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void					ft_lstdelthis(t_list **alst, size_t lstnum, \
+													void (*del)(void *, size_t));
+void					ft_lstdeltail(t_list **alst, void (*del)(void *, size_t));
+void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void					ft_lstprint(t_list *alst, void (*print)(void *));
+size_t					ft_lstsize(t_list *alst);
 
 /*
 ** ft_map
@@ -83,18 +89,19 @@ int						ft_listsize(t_list *head);
 
 typedef struct			s_map
 {
-	t_hlist				**head;
-	int					size;
-	void				*hashfunc;
+	t_list				**array;
+	size_t				size;
+	void				*valuedel_func;
 }						t_map;
 
-t_map					*ft_mapnew(void *hashfunc_ptr, int size);
-int						ft_ismapitem(t_map *map, const char *key);
-const char				*ft_mapvalue(const t_map *map, const char *key);
-void					ft_mapinsert(t_map *map, const char *key, \
-										const void *value);
-void					ft_mapdelone(t_map *map, const char *key);
-void					ft_mapdel(t_map **map);
+t_map				*ft_mapinit(size_t mapsize, void *valuedel_func);
+void				ft_mapinsert(t_map *map, const char *key, void *value);
+int					ft_ismapitem(t_map *map, const char *key);
+const void			*ft_mapvalue(t_map *map, const char *key);
+void				ft_mapdel(t_map **map);
+void				ft_mapdelind(t_map **map, size_t index);
+void				ft_mapdelkey(t_map **map, const char *key);
+void				ft_putmap(t_map *map, void (*printvalue)(void *));
 
 /*
 ** ft_math
@@ -113,6 +120,7 @@ char					**ft_matrsnew(size_t matr_size, size_t line_size);
 char					**ft_matrmemalloc(size_t size);
 char					**ft_matrnew(const char *first_str, ...);
 char					**ft_matrdup(const char **matr);
+void					ft_strswap(char **matr, int first, int second);
 void					*ft_matrdel(char ***ret);
 size_t					ft_matrlen(const char **matr);
 
@@ -143,7 +151,6 @@ char					*ft_strcpy(char *dst, const char *src);
 char					*ft_strncpy(char *dst, const char *src, size_t len);
 char					*ft_strcat(char *str, const char *tail);
 char					*ft_strncat(char *str, const char *tail, size_t n);
-size_t					ft_strlcat(char *dst, const char *src, size_t size);
 const char				*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
 char					*ft_strstr(const char *s1, const char *s2);
@@ -186,7 +193,6 @@ void					ft_putendl_fd(char const *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
 int						ft_isspace(int c);
 int						ft_numblen(long long n);
-char					**ft_strswap(char **matrix, int first, int second);
 char					*ft_strncut(char *str, int n, char *choice);
 char					*ft_strencut(char *str, int n, char *choice);
 char					*ft_addsymb(char *str, char c, int num);
@@ -194,9 +200,7 @@ char					*ft_addsymbend(char *str, char c, int num);
 void					ft_strglue(char *puthere, ...);
 void					ft_strlglue(int start, char *puthere, ...);
 char					*ft_stradd(char *str, char c);
-char					*ft_strnadd(char *str, char c, size_t n);
 size_t					ft_matrlen(const char **matr);
 int						ft_isempty(const char *str);
-int						ft_alnumstr(const char *str);
 
 #endif

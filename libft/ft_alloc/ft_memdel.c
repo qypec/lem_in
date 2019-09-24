@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 11:35:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/07 12:16:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:10:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void				ft_memdel(void **ap)
 {
 	if (!ap)
 		return ;

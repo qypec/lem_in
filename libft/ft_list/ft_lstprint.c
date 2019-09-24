@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_listsize.c                                      :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/03 20:30:00 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/07 12:15:57 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/17 09:53:17 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/25 00:16:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_listsize(t_list *head)
+void				ft_lstprint(t_list *alst, void (*print)(void *))
 {
-	t_list			*tmp;
-	int				len;
+	size_t			i;
 
-	tmp = head;
-	len = 0;
-	while (tmp != NULL)
+	i = 0;
+	while (alst != NULL)
 	{
-		len++;
-		tmp = tmp->next;
+		ft_printf("[%zu] content:\n[\n  ", i++);
+		print(alst->content);
+		ft_printf("\n]");
+		ft_printf("\ncontent_size: %d\n\n", alst->content_size);
+		alst = alst->next;
 	}
-	return (len);
 }

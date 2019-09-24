@@ -6,26 +6,20 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:38:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/09 19:58:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/17 10:02:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void					ft_lstdel(t_list **head)
+void					ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list				*tmp;
-	void				(*delfunc)(t_list *list);
 
-	if (*head == NULL)
-		return ;
-	tmp = *head;
-	while (tmp->next != NULL)
+	while (*alst != NULL)
 	{
-		if ((*head = ft_lstdelone(*head, tmp)) == NULL)
-			return ;
-		tmp = (*head);
+		tmp = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = tmp;
 	}
-	delfunc = (*head)->delfunc;
-	delfunc(*head);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strswap.c                                       :+:      :+:    :+:   */
+/*   ft_lstaddhere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 19:57:50 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:59 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/17 10:40:31 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/17 10:49:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_strswap(char **matrix, int first, int second)
+void				ft_lstaddhere(t_list **alst, t_list *new, size_t position)
 {
-	char	*tmp;
-
-	tmp = ft_strdup(matrix[first]);
-	ft_strdel(&matrix[first]);
-	matrix[first] = ft_strdup(matrix[second]);
-	ft_strdel(&matrix[second]);
-	matrix[second] = ft_strdup(tmp);
-	ft_strdel(&tmp);
-	return (matrix);
+	while (*alst != NULL && position)
+	{
+		alst = &(*alst)->next;
+		position--;
+	}
+	if (position == 0)
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

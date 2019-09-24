@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:29:25 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/10 14:05:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/22 22:09:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void				ft_lstadd(t_list **alst, t_list *new)
 {
 	if (new == NULL)
 		return ;
-	else
-	{
-		new->next = *alst;
-		*alst = new;
-	}
+	new->next = *alst;
+	*alst = new;
 }

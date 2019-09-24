@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:19:08 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/02 21:43:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 18:01:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void				ft_putchar(char c)
 {
 	write(1, &c, 1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hashfunc.c                                      :+:      :+:    :+:   */
+/*   hashfunc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/15 18:11:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/07 12:18:57 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/18 09:47:41 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/18 18:43:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static long long		aabs(long long num)
 		return (num);
 }
 
-int						ft_hashfunc(const char *str, int size)
+int						hashfunction(const char *str, int size)
 {
 	int			i;
 	long long	hash;

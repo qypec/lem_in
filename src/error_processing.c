@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   error_processing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 20:44:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/20 16:08:09 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/20 17:22:18 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/20 17:22:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lem_in.h"
 
-char				*ft_strstr(const char *haystack, const char *needle)
+void				error_processing(char **line)
 {
-	size_t			i;
-	const char		*tmp;
-
-	while (*haystack != '\0')
-	{
-		i = 0;
-		tmp = haystack;
-		while (*(tmp++) == needle[i])
-			i++;
-		if (needle[i] == '\0')
-			return ((char *)haystack);
-		haystack++;
-	}
-	return (NULL);
+	ft_strdel(line);
+	ft_strdel(&g_start);
+	ft_strdel(&g_end);
+	ft_mapdel(&g_graph);
+	ft_printf("ERROR\n");
+	exit(1);
 }

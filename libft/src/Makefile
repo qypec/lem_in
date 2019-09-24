@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/03 20:02:41 by yquaro            #+#    #+#              #
-#    Updated: 2019/08/23 18:54:49 by yquaro           ###   ########.fr        #
+#    Updated: 2019/09/19 11:08:26 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ SOURCES = ft_atoi.c ft_bzero.c \
 			ft_putendl_fd.c	ft_putnbr.c ft_putnbr_fd.c \
 			ft_putstr.c ft_putstr_fd.c ft_strcat.c ft_strchr.c \
 			ft_strclr.c ft_strcmp.c ft_strcpy.c ft_strdup.c ft_strencut.c \
-			ft_strglue.c ft_striter.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
-			ft_strlen.c ft_strmap.c ft_strmapi.c ft_strnadd.c ft_strncat.c \
+			ft_strglue.c ft_striter.c ft_striteri.c ft_strjoin.c \
+			ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c \
 			ft_strncmp.c ft_strncpy.c ft_strncut.c ft_strnequ.c ft_strnew.c \
 			ft_strlglue.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
 			ft_strsub.c ft_strswap.c ft_strtrim.c ft_tolower.c ft_toupper.c \
-			ft_isempty.c ft_alnumstr.c get_next_line.c
+			ft_isempty.c get_next_line.c ft_strequ.c
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 
 all: print $(OBJECTS)

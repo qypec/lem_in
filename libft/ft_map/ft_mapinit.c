@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_mapinit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 19:10:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:51 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/17 18:06:25 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/25 00:22:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_map.h"
 
-size_t		ft_strlcat(char *dst, const char *src, size_t siz)
+t_map				*ft_mapinit(size_t mapsize, void *valuedel_func)
 {
-	char		*d;
-	const char	*s;
-	size_t		n;
-	size_t		dlen;
+	t_map			*map;
+	size_t			i;
 
-	d = dst;
-	s = src;
-	n = siz;
-	while (*d != '\0' && n-- != 0)
-		d++;
-	dlen = d - dst;
-	n = siz - dlen;
-	if (n == 0)
-		return (dlen + ft_strlen(s));
-	while (*s != '\0')
+	if ((map = (t_map *)malloc(sizeof(t_map))) == NULL)
+		return (NULL);
+	map->size = mapsize;
+	map->valuedel_func = valuedel_func;
+	if ((map->array = (t_list **)malloc(sizeof(t_list *) * (mapsize + 1))) == NULL)
+		return (NULL);
+	i = 0;
+	while (i < mapsize)
 	{
-		if (n != 1)
-		{
-			*d++ = *s;
-			n--;
-		}
-		s++;
+		map->array[i] = NULL;
+		i++;
 	}
-	*d = '\0';
-	return (dlen + (s - src));
+	return (map);
 }

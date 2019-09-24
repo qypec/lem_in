@@ -6,19 +6,17 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 11:40:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:19:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char				*ft_strnew(size_t size)
 {
-	char *str;
+	char			*str;
 
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (str == NULL)
+	if ((str = (char *)ft_memalloc(sizeof(char) * size)) == NULL)
 		return (NULL);
-	else
-		return (ft_memset(str, '\0', size + 1));
+	return (str);
 }

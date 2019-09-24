@@ -6,16 +6,15 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 23:24:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:06:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+int					ft_isalnum(int c)
 {
 	if (ft_isdigit(c) || ft_isalpha(c))
 		return (1);
-	else
-		return (0);
+	return (0);
 }

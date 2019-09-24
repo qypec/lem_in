@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   htab.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 20:44:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/20 16:08:09 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/18 09:34:12 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/18 11:55:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_map.h"
 
-char				*ft_strstr(const char *haystack, const char *needle)
+t_htab				*init_htab(const char *key, void *value)
 {
-	size_t			i;
-	const char		*tmp;
+	t_htab			*htab;
 
-	while (*haystack != '\0')
+	if ((htab = (t_htab *)malloc(sizeof(t_htab))) == NULL)
+		return (NULL);
+	if ((htab->key = ft_strdup(key)) == NULL)
 	{
-		i = 0;
-		tmp = haystack;
-		while (*(tmp++) == needle[i])
-			i++;
-		if (needle[i] == '\0')
-			return ((char *)haystack);
-		haystack++;
+		free(htab);
+		return (NULL);
 	}
-	return (NULL);
+	htab->value = value;
+	return (htab);
 }

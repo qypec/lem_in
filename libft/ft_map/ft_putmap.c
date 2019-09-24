@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mapdelone.c                                     :+:      :+:    :+:   */
+/*   ft_putmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 19:49:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/07 12:19:11 by yquaro           ###   ########.fr       */
+/*   Created: 2019/06/15 19:40:07 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/18 18:19:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_map.h"
 #include "libft.h"
 
-void					ft_mapdelone(t_map *map, const char *key)
+void					ft_putmap(t_map *map, void (*printvalue)(void *))
 {
-	int					hash;
-	int					(*hash_func)(const char *, int);
-	t_hlist				**tmp;
+	size_t				i;
+	t_list				*tmp;
 
-	hash_func = map->hashfunc;
-	hash = hash_func(key, map->size);
-	tmp = &(map->head[hash]);
-	if (*tmp == NULL)
-		return ;
-	while (*tmp != NULL)
+	i = 0;
+	while (i < map->size)
 	{
-		if (ft_strcmp((const char *)(*tmp)->key, key) == 0)
+		tmp = map->array[i];
+		if (tmp == NULL)
+			ft_printf("[%d] (null)\n", i);
+		else
 		{
-			map->head[hash] = ht_listdelone(map->head[hash], *tmp);
-			return ;
+			while (tmp != NULL)
+			{
+				ft_printf("[%d] ", i);
+				print_htab(tmp->content, printvalue);
+				tmp = tmp->next;
+			}
 		}
-		if ((*tmp)->next == NULL)
-			return ;
-		tmp = &((*tmp)->next);
+		i++;
 	}
 }

@@ -5,27 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/18 19:58:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/26 16:06:45 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/17 19:12:31 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/18 13:36:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MAP_H
 # define FT_MAP_H
 
-# define DEFAULT_HASHFUNC &ft_hashfunc
-
-typedef struct			s_htablist
+typedef struct			s_htab
 {
 	char				*key;
-	char				*value;
-	struct s_htablist	*next;
-}						t_hlist;
+	void				*value;
+}						t_htab;
 
-t_hlist					*ht_listnew(const char *key, const void *value);
-t_hlist					*ht_listdelone(t_hlist *head, t_hlist *dellist);
-void					ht_listdel(t_hlist **head);
-
-int						ft_hashfunc(const char *str, int size);
+int						hashfunction(const char *str, int size);
+t_htab					*init_htab(const char *key, void *value);
+void					print_htab(t_htab *htab, void (*printvalue)(void *));
 
 #endif

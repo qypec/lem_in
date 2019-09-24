@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 20:40:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:33 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/16 11:05:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+int					ft_atoi(const char *str)
 {
 	unsigned long	sign;
 	unsigned long	nb;
