@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 04:14:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 05:13:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ t_links				*linksinit(const char *name, int wt);
 void				linksdel(void *content, size_t content_size);
 
 void				parsing(void);
-void				*what_is_this_line(char *line);
+void				*what_is_this_line(char **line);
 int					is_room_name(char *line);
 int					is_room_name_line(const char *line);
-void				add_room_link(char *line);
-void				add_start_room(char *line);
-void				add_end_room(char *line);
-void				add_room(char *line);
-void				add_number_of_ants(char *line);
+void				add_room_link(char **line);
+void				add_start_room(char **line);
+void				add_end_room(char **line);
+void				add_room(char **line);
+void				add_number_of_ants(char **line);
 
 void				error_processing(char **line);
 

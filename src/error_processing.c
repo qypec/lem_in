@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:22:18 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/20 17:22:43 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 06:08:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void				error_processing(char **line)
 {
+	// ft_printf("error line : %s\n", *line);
 	ft_strdel(line);
 	ft_strdel(&g_start);
 	ft_strdel(&g_end);

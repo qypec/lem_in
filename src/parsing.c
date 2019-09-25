@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 03:50:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 05:50:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					is_room_name(char *line)
 void				parsing(void)
 {
 	char			*line;
-	void			(*line_processing)(char *);
+	void			(*line_processing)(char **);
 	int				ret;
 
 	line = NULL;
@@ -39,9 +39,9 @@ void				parsing(void)
 	{
 		if (ret == 1)
 			error_processing(&line);
-		if ((line_processing = what_is_this_line(line)) == COMMENT_LINE)
+		if ((line_processing = what_is_this_line(&line)) == COMMENT_LINE)
 			continue ;
-		line_processing(line);
+		line_processing(&line);
 	}
 	if (g_number_of_ants == 0 || g_start == NULL || g_end == NULL)
 		error_processing(&line);
