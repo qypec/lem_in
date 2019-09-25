@@ -6,26 +6,24 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:17:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/22 22:37:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 04:28:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int			is_comment_line(char *line)
+static void			*what_is_comment_line(char *line)
 {
 	static int		start_line_counter;
 	static int		end_line_counter;
 
-	if (*line != '#')
-		return (0);
-	else if (ft_strnequ(line, "##start", 7))
+	if (ft_strnequ(line, "##start", 7) && line[7] == '\0')
 	{
 		if (++start_line_counter > 1)
 			error_processing(&line);
 		return (START_ROOM_LINE);
 	}
-	else if (ft_strnequ(line, "##end", 5))
+	else if (ft_strnequ(line, "##end", 5) && line[5] == '\0')
 	{
 		if (++end_line_counter > 1)
 			error_processing(&line);
@@ -51,47 +49,55 @@ static int			is_number_of_ant_line(char *line)
 	return (1);
 }
 
-int					is_room_name_line(char *line)
+int					is_room_name_line(const char *line)
 {
-	const char		*ptr;
+	char			*tmp;
+	int				ret;
 
-	if ((ptr = ft_strchr(line, ' ')) == NULL)
+	tmp = (char *)line;
+	if (!(ret = is_room_name(tmp)))
 		return (0);
-	ptr++;
-	if ((ptr = ft_strchr(ptr, ' ')) == NULL)
+	if (*(tmp + ret) != ' ')
 		return (0);
-	ptr++;
-	if ((ptr = ft_strchr(ptr, ' ')) == NULL)
-		return (1);
-	return (0);
-}
-
-static int			is_room_link_line(char *line)
-{
-	const char		*ptr;
-
-	if ((ptr = ft_strchr(line, '-')) == NULL)
+	tmp += (ret + 1);
+	if (!ft_isdigit(*tmp))
 		return (0);
-	ptr++;
-	while (*ptr != '\0')
-	{
-		if (!ft_isalnum(*(ptr++)))
-			return (0);
-	}
+	if ((tmp = (char *)ft_strchr(tmp, ' ')) == NULL)
+		return (0);
+	if (ft_strchr(++tmp, ' ') != NULL)
+		return (0);
 	return (1);
 }
 
-int					what_is_this_line(char *line)
+static int			is_room_link_line(const char *line)
 {
-	size_t			qualifier;
+	char			*tmp;
+	int				ret;
 
-	if ((qualifier = is_comment_line(line)))
-		return (qualifier);
+	tmp = (char *)line;
+	if (!(ret = is_room_name(tmp)))
+		return (0);
+	if (*(tmp + ret) != '-')
+		return (0);
+	tmp += (ret + 1);
+	if (!(ret = is_room_name(tmp)))
+		return (0);
+	if (*(tmp + ret) != '\0')
+		return (0);
+	return (1);
+}
+
+void				*what_is_this_line(char *line)
+{
+	if (*line == '#')
+		return (what_is_comment_line(line));
 	else if (is_number_of_ant_line(line))
 		return (NUMBER_OF_ANTS_LINE);
-	else if (is_room_name_line(line))
+	else if (is_room_name_line((const char *)line))
 		return (DEFAULT_ROOM_LINE);
-	else if (is_room_link_line(line))
+	else if (is_room_link_line((const char *)line))
 		return (ROOM_LINK_LINE);
-	return (0);
+	else
+		error_processing(&line);
+	return (NULL);
 }

@@ -10,3 +10,4 @@ void				printvalue(void *value)
 	ft_printf("ant_here = %d\n", ((t_room *)value)->ant_here);
 	ft_lstprint(((t_room *)value)->link, printlstvalue);
 }
+
