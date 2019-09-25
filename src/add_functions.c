@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 02:56:33 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 06:07:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 06:27:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void				add_room_link(char **line)
 
 	link_name = ft_strchr(*line, '-');
 	room_name = ft_strsub(*line, 0, link_name - *line);
-	if (!ft_ismapitem(g_graph, ++link_name))
+	if (!ft_ismapitem(g_graph, ++link_name) || ft_strequ(room_name, link_name))
 	{
 		ft_strdel(&room_name);
 		error_processing(line);
@@ -37,6 +37,8 @@ void				add_start_room(char **line)
 	if (get_next_line(0, line) < 0 || !is_room_name_line(*line))
 		error_processing(line);
 	g_start = ft_strsub(*line, 0, ft_strchr(*line, ' ') - *line);
+	if (ft_ismapitem(g_graph, g_start))
+		error_processing(line);
 	ft_mapinsert(g_graph, g_start, roominit());
 }
 
@@ -45,6 +47,8 @@ void				add_end_room(char **line)
 	if (get_next_line(0, line) < 0 || !is_room_name_line(*line))
 		error_processing(line);
 	g_end = ft_strsub(*line, 0, ft_strchr(*line, ' ') - *line);
+	if (ft_ismapitem(g_graph, g_end))
+		error_processing(line);
 	ft_mapinsert(g_graph, g_end, roominit());
 }
 
@@ -53,6 +57,8 @@ void				add_room(char **line)
 	char			*room_name;
 
 	room_name = ft_strsub(*line, 0, ft_strchr(*line, ' ') - *line);
+	if (ft_ismapitem(g_graph, room_name))
+		error_processing(line);
 	ft_mapinsert(g_graph, room_name, roominit());
 	ft_strdel(&room_name);
 }

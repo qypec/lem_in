@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 05:50:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/25 06:10:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int					is_room_name(char *line)
 	size_t			i;
 
 	i = 0;
+	if (line[i] == 'L')
+		return (0);
 	while (line[i] != '\0' && line[i] != ' ' && line[i] != '-')
 	{
 		if (!ft_isalnum(line[i]) && line[i] != '_')
