@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 06:10:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/26 17:40:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void				parsing(void)
 			continue ;
 		line_processing(&line);
 	}
-	if (g_number_of_ants == 0 || g_start == NULL || g_end == NULL)
+	if (g_graph->number_of_ants == 0 || g_graph->start == NULL || g_graph->end == NULL)
 		error_processing(&line);
 	ft_strdel(&line);
 }

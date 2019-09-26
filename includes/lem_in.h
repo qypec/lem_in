@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 05:13:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/26 17:32:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,22 @@ typedef struct		s_room
 	t_list			*link;
 }					t_room;
 
-t_map				*g_graph;
-size_t				g_number_of_ants; 
-char				*g_start;
-char				*g_end;
+typedef struct		s_graph
+{
+	t_map			*map;
+	size_t			number_of_ants; 
+	char			*start;
+	char			*end;
+}					t_graph;
 
-// debagging
+t_graph				*g_graph;
+
+// debugging
 int					g_fd;
 //
 
+t_graph				*graphinit(void);
+void				graphdel(t_graph **graph);
 t_room				*roominit(void);
 void				roomdel(void **room);
 t_links				*linksinit(const char *name, int wt);
