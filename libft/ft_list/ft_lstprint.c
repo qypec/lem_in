@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 09:53:17 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 00:16:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/27 02:43:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				ft_lstprint(t_list *alst, void (*print)(void *))
 	i = 0;
 	while (alst != NULL)
 	{
-		ft_printf("[%zu] content:\n[\n  ", i++);
+		ft_printf("lst-[%zu] content:\n[\n", i++);
 		print(alst->content);
 		ft_printf("\n]");
 		ft_printf("\ncontent_size: %d\n\n", alst->content_size);

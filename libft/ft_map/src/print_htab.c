@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 10:00:20 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/18 11:31:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/27 02:41:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void				print_htab(t_htab *htab, void (*printvalue)(void *))
 {
-	ft_printf("key : %s\n  value:\n", htab->key);
+	ft_printf("key : %s\n    value:\n", htab->key);
 	printvalue(htab->value);
 }

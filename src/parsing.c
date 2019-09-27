@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/26 17:40:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/27 04:45:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ void				parsing(void)
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		if (ret == 1)
-			error_processing(&line);
+			error_processing_line(&line);
 		if ((line_processing = what_is_this_line(&line)) == COMMENT_LINE)
 			continue ;
 		line_processing(&line);
 	}
-	if (g_graph->number_of_ants == 0 || g_graph->start == NULL || g_graph->end == NULL)
-		error_processing(&line);
+	if (g_graph->number_of_ants == 0 || g_graph->start == NULL || \
+			g_graph->end == NULL)
+		error_processing_line(&line);
 	ft_strdel(&line);
 }

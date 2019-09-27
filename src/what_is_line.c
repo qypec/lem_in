@@ -20,13 +20,13 @@ static void			*what_is_comment_line(char **line)
 	if (ft_strnequ(*line, "##start", 7) && (*line)[7] == '\0')
 	{
 		if (++start_line_counter > 1)
-			error_processing(line);
+			error_processing_line(line);
 		return (START_ROOM_LINE);
 	}
 	else if (ft_strnequ(*line, "##end", 5) && (*line)[5] == '\0')
 	{
 		if (++end_line_counter > 1)
-			error_processing(line);
+			error_processing_line(line);
 		return (END_ROOM_LINE);
 	}
 	else
@@ -45,7 +45,7 @@ static int			is_number_of_ant_line(char **line)
 			return (0);
 	}
 	if (++number_of_ants_counter > 1)
-		error_processing(line);
+		error_processing_line(line);
 	return (1);
 }
 
@@ -98,6 +98,6 @@ void				*what_is_this_line(char **line)
 	else if (is_room_link_line((const char *)*line))
 		return (ROOM_LINK_LINE);
 	else
-		error_processing(line);
+		error_processing_line(line);
 	return (NULL);
 }

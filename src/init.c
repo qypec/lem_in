@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 12:18:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/26 17:37:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/27 02:44:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_graph				*graphinit(void)
 
 	if ((graph = (t_graph *)malloc(sizeof(t_graph))) == NULL)
 		return (NULL);
-	if ((graph->map = ft_mapinit(100, &roomdel)) == NULL)
+	if ((graph->map = ft_mapinit(10, &roomdel)) == NULL)
 	{
 		free(graph);
 		graph = NULL;
