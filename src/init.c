@@ -6,11 +6,30 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 12:18:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/27 02:44:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/27 18:15:17 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+t_prev				*prev_room_init(char *current, char *prev_str)
+{
+	t_prev			*prev;
+
+	if ((prev = (t_prev *)malloc(sizeof(t_prev))) == NULL)
+		return (NULL);
+	prev->current = ft_strdup(current);
+	prev->prev = ft_strdup(prev_str);
+	return (prev);
+}
+
+void				prev_room_del(t_prev **prev)
+{
+	ft_strdel(&((*prev)->current));
+	ft_strdel(&((*prev)->prev));
+	free(*prev);
+	*prev = NULL;
+}
 
 t_graph				*graphinit(void)
 {
@@ -57,6 +76,7 @@ t_room				*roominit(void)
 
 	if ((room = (t_room *)malloc(sizeof(t_room))) == NULL)
 		return (NULL);
+	room->is_visited = 0;
 	room->ant_here = 0;
 	room->link = NULL;
 	return (room);
@@ -75,6 +95,7 @@ void				roomdel(void **room)
 {
 	ft_lstdel(&(((t_room *)(*room))->link), &linksdel);
 	((t_room *)(*room))->ant_here = 0;
+	((t_room *)(*room))->is_visited = 0;
 	free(*room);
 	*room = NULL;
 }

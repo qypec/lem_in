@@ -4,5 +4,7 @@ start 0 0
 triangle 0 0
 ##end
 end 0 0
-start-end
-start-triangle
+start-en triangle
+triangle-start
+triangle-end
+end-triangle

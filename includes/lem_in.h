@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/27 05:10:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/27 18:27:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define NUMBER_OF_ANTS_LINE &add_number_of_ants
 # define ROOM_LINK_LINE &add_room_link
 
+typedef	struct		s_prev
+{
+	char			*current;
+	char			*prev;
+}					t_prev;
+
 typedef struct		s_links
 {
 	char			*name;
@@ -33,13 +39,14 @@ typedef struct		s_links
 typedef struct		s_room
 {
 	int				ant_here;
+	int				is_visited;
 	t_list			*link;
 }					t_room;
 
 typedef struct		s_graph
 {
 	t_map			*map;
-	size_t			number_of_ants; 
+	size_t			number_of_ants;
 	char			*start;
 	char			*end;
 }					t_graph;
@@ -57,6 +64,8 @@ t_room				*roominit(void);
 void				roomdel(void **room);
 t_links				*linksinit(const char *name, int wt);
 void				linksdel(void *content, size_t content_size);
+t_prev				*prev_room_init(char *current, char *prev_str);
+void				prev_room_del(t_prev **prev);
 
 void				spath_del(void *str, size_t size);
 

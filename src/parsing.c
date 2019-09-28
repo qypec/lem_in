@@ -37,7 +37,7 @@ void				parsing(void)
 	int				ret;
 
 	line = NULL;
-	while ((ret = get_next_line(0, &line)) > 0)
+	while ((ret = get_next_line(g_fd, &line)) > 0)
 	{
 		if (ret == 1)
 			error_processing_line(&line);
