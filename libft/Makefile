@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#              #
-#    Updated: 2019/09/18 09:52:57 by yquaro           ###   ########.fr        #
+#    Updated: 2019/09/28 18:14:10 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ print:
 
 compile_all_directory:
 	@make -C ft_list/ all
+	@make -C ft_dbllist/ all
 	@make -C ft_ctime/ all
 	@make -C ft_alloc/ all
 	@make -C ft_math/ all
@@ -32,6 +33,7 @@ compile_all_directory:
 clean:
 	@make -C lib/ clean
 	@make -C ft_list/ clean
+	@make -C ft_dbllist/ clean
 	@make -C ft_ctime/ clean
 	@make -C ft_alloc/ clean
 	@make -C ft_math/ clean
@@ -44,6 +46,7 @@ clean:
 fclean: clean
 	@make -C lib/ fclean
 	@make -C ft_list/ fclean
+	@make -C ft_dbllist/ fclean
 	@make -C ft_ctime/ fclean
 	@make -C ft_alloc/ fclean
 	@make -C ft_math/ fclean

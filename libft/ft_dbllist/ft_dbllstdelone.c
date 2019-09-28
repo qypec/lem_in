@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_dbllstdelone.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 21:29:25 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/28 18:00:11 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/28 18:03:07 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/28 18:16:52 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_lstadd(t_list **alst, t_list *new)
+void					ft_dbllstdelone(t_dbllist **alst, \
+											void (*del)(void *, size_t))
 {
-	if (new == NULL)
+	if (*alst == NULL)
 		return ;
-	new->next = *alst;
-	*alst = new;
+	del((*alst)->content, (*alst)->content_size);
+	(*alst)->next = NULL;
+	(*alst)->prev = NULL;
+	free(*alst);
+	*alst = NULL;
 }

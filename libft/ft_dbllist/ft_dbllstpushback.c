@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprint.c                                      :+:      :+:    :+:   */
+/*   ft_dbllstpushback.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 09:53:17 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/27 02:43:13 by yquaro           ###   ########.fr       */
+/*   Created: 2019/09/28 17:51:45 by yquaro            #+#    #+#             */
+/*   Updated: 2019/09/28 18:16:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_lstprint(t_list *alst, void (*print)(void *))
+void				ft_dbllstpushback(t_dbllist **alst, t_dbllist *new)
 {
-	size_t			i;
+	t_dbllist			**prev;
 
-	i = 0;
-	while (alst != NULL)
-	{
-		ft_printf("lst-[%zu] content:\n[\n", i++);
-		print(alst->content);
-		ft_printf("\n]");
-		ft_printf("\ncontent_size: %d\n\n", alst->content_size);
-		alst = alst->next;
-	}
+	if (new == NULL)
+		return ;
+ 	while (*alst != NULL)
+ 	{
+ 		prev = &(*alst);
+    	alst = &(*alst)->next;
+ 	}
+    *alst = new;
+    (*alst)->prev = *prev;
 }

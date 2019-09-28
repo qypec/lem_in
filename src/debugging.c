@@ -10,7 +10,7 @@ void				printvalue(void *value)
 {
 	ft_printf("      ant_here = '%d'\n      links:\n", \
 		((t_room *)value)->ant_here);
-	ft_lstprint(((t_room *)value)->link, printlstvalue);
+	ft_putlst(((t_room *)value)->link, printlstvalue);
 }
 
 void				print_graph(void)

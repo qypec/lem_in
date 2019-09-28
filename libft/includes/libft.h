@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/27 18:28:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/28 18:27:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,29 @@ void					ft_lstdelthis(t_list **alst, size_t lstnum, \
 void					ft_lstdeltail(t_list **alst, void (*del)(void *, size_t));
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void					ft_lstprint(t_list *alst, void (*print)(void *));
+void					ft_putlst(t_list *alst, void (*print)(void *));
 size_t					ft_lstsize(t_list *alst);
+
+/*
+** ft_dbllist
+*/
+
+typedef struct			s_dbllist
+{
+	void				*content;
+	size_t				content_size;
+	struct s_dbllist	*next;
+	struct s_dbllist	*prev;
+}						t_dbllist;
+
+t_dbllist				*ft_dbllstnew(void *content, size_t content_size);
+void					ft_dbllstadd(t_dbllist **alst, t_dbllist *new);
+void					ft_dbllstpushback(t_dbllist **alst, t_dbllist *new);
+void					ft_dbllstdel(t_dbllist **alst, \
+										void (*del)(void *, size_t));
+void					ft_dbllstdelone(t_dbllist **alst, \
+											void (*del)(void *, size_t));
+void					ft_putdbllst(t_dbllist *alst, void (*print)(void *));
 
 /*
 ** ft_map
