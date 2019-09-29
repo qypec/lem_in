@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 12:18:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/28 21:20:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/29 15:18:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ t_prev				*prev_room_init(char *current, char *prev_str)
 	return (prev);
 }
 
-void				prev_room_del(t_prev **prev)
+void				del_prevroom(void *content, size_t content_size)
 {
-	ft_strdel(&((*prev)->current));
-	ft_strdel(&((*prev)->prev));
-	free(*prev);
-	*prev = NULL;
+	ft_strdel(&((t_prev *)(content))->current);
+	ft_strdel(&((t_prev *)(content))->prev);
+	free(content);
+	content = NULL;
+	content_size = 0;
+}
+
+void				del_str_from_list(void *content, size_t content_size)
+{
+	ft_strdel((char **)&content);
+	content_size = 0;
 }
 
 t_graph				*graphinit(void)

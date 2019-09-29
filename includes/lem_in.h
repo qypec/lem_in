@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/28 21:26:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/29 15:25:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 # define START_ROOM g_graph->start
 # define END_ROOM g_graph->end
-# define LINKS_NAME ((t_links *)(link->content))->name
 
 typedef	struct		s_prev
 {
@@ -69,12 +68,11 @@ void				roomdel(void **room);
 t_links				*linksinit(const char *name, int wt);
 void				linksdel(void *content, size_t content_size);
 t_prev				*prev_room_init(char *current, char *prev_str);
-void				prev_room_del(t_prev **prev);
-
-void				spath_del(void *str, size_t size);
+void				del_prevroom(void *content, size_t content_size);
+void				del_str_from_list(void *content, size_t content_size);
 
 //
-void				algorithm(void);
+void				spath_del(void *str, size_t size);
 //
 
 void				parsing(void);
@@ -86,6 +84,8 @@ void				add_start_room(char **line);
 void				add_end_room(char **line);
 void				add_room(char **line);
 void				add_number_of_ants(char **line);
+
+t_list				*shortest_path_search(void);
 
 void				error_processing_line(char **line);
 void				error_processing(t_list	**spath);
