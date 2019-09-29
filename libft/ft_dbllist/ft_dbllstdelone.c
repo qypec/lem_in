@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 18:03:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/28 18:16:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/28 21:15:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void					ft_dbllstdelone(t_dbllist **alst, \
 											void (*del)(void *, size_t))
 {
+	if (alst == NULL)
+		return ;
 	if (*alst == NULL)
 		return ;
 	del((*alst)->content, (*alst)->content_size);

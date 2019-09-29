@@ -1,10 +1,32 @@
 5
 ##start
 start 0 0
-triangle 0 0
+triangle1 0 0
+triangle2 0 0
+triangle3 0 0
+square1 0 0
+square2 0 0
+apple1 0 0
+apple2 0 0
 ##end
 end 0 0
-start-en triangle
-triangle-start
-triangle-end
-end-triangle
+start-triangle1
+triangle1-start
+start-square1
+square1-start
+triangle1-triangle2
+triangle2-triangle1
+triangle2-triangle3
+triangle3-triangle2
+triangle3-end
+end-triangle3
+square1-square2
+square2-square1
+square1-apple1
+apple1-square1
+square2-end
+end-square2
+apple1-apple2
+apple2-apple1
+apple2-end
+end-apple2

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/27 18:27:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/09/28 21:26:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # define DEFAULT_ROOM_LINE &add_room
 # define NUMBER_OF_ANTS_LINE &add_number_of_ants
 # define ROOM_LINK_LINE &add_room_link
+
+# define START_ROOM g_graph->start
+# define END_ROOM g_graph->end
+# define LINKS_NAME ((t_links *)(link->content))->name
 
 typedef	struct		s_prev
 {
