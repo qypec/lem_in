@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:20:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 17:34:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define END_ROOM g_graph->end
 
 # define GET_ROOM(room_name) (t_room *)ft_mapvalue(g_graph->map, room_name)
-# define LINKS_NAME ((t_links *)(link->content))->name
+# define LINKS_NAME(elem) ((t_links *)((elem)->content))->name
 
 typedef	struct		s_prev
 {
@@ -89,6 +89,7 @@ void				add_room(char **line);
 void				add_number_of_ants(char **line);
 
 t_list				*shortest_path_search(void);
+void				redirect_path_from_end_to_start(t_list *path);
 
 void				error_processing_line(char **line);
 void				error_processing(t_list	**spath);

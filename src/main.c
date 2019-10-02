@@ -6,15 +6,33 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:21:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 17:56:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
+//
+
+void				print_paths(void *content);
+
+void				del_elem(void *content, size_t content_size)
+{
+	ft_strdel((char **)&content);
+	content_size = 0;
+}
+
+void				del_paths(void *content, size_t content_size)
+{
+	ft_lstdel((t_list **)&content, del_elem);
+	content_size = 0;
+}
+//
+
 int					main(void)
 {	
 	t_list		*paths;
+	t_list		*path;
 	t_list		*first_path;
 
 // debugging open file
@@ -27,24 +45,24 @@ int					main(void)
 	parsing();
 	if ((first_path = shortest_path_search()) == NULL)
 		error_processing(&first_path);
-	// redirect_path_from_end_to_start(first_path);
-
-	// paths = ft_lstnew(first_path, sizeof(t_list *));
-	// while ((path = shortest_path_search()) != NULL)
-	// {
-	// 	redirect_path_from_end_to_start(path);
-	// 	ft_lstadd(&paths, ft_lstnew(path, sizeof(t_list *)));
-	// }
+	redirect_path_from_end_to_start(first_path);
+	paths = ft_lstnew(first_path, sizeof(t_list *));
+	while ((path = shortest_path_search()) != NULL)
+	{
+		redirect_path_from_end_to_start(path);
+		ft_lstadd(&paths, ft_lstnew(path, sizeof(t_list *)));
+	}
 	// paths = find_optimum_ways(&paths);
 	// ants_run(paths);
 
 // debugging output
-	print_graph();
+	// print_graph();
 	// ft_printf("paths:\n");
-	// ft_putlst(paths, &print);
+	ft_putlst(paths, &print_paths);
 //
 
-	// ft_lstdel(&paths, );
+	// ft_lstdel(&first_path, del_elem);
+	ft_lstdel(&paths, del_paths);
 	graphdel(&g_graph);
 
 // debugging close file

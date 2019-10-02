@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:21:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 17:32:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ static void			add_links_to_queue(t_list **queue, t_list **pathstack, \
 
 	while (link != NULL)
 	{
-		room = ((t_room *)(ft_mapvalue(g_graph->map, LINKS_NAME)));
+		room = ((t_room *)(ft_mapvalue(g_graph->map, LINKS_NAME(link))));
 		if (!(room->is_visited))
 		{
 			room->is_visited = 1;
 			ft_lstpushback(queue, \
-				ft_lstnew(ft_strdup(LINKS_NAME), sizeof(char *)));
+				ft_lstnew(ft_strdup(LINKS_NAME(link)), sizeof(char *)));
 			ft_lstadd(pathstack, \
-				ft_lstnew(prev_room_init(LINKS_NAME, parent_name), \
+				ft_lstnew(prev_room_init(LINKS_NAME(link), parent_name), \
 					sizeof(t_prev *)));
-			if (ft_strequ(LINKS_NAME, END_ROOM))
+			if (ft_strequ(LINKS_NAME(link), END_ROOM))
 			{
 				ft_lstdel(queue, del_str_from_list);
 				break ;
