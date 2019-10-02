@@ -8,8 +8,8 @@ void				printlstvalue(void *value)
 
 void				printvalue(void *value)
 {
-	ft_printf("      ant_here = '%d'\n      links:\n", \
-		((t_room *)value)->ant_here);
+	ft_printf("      ant_here = '%d'\n      is_visited: '%d'\n      links\n", \
+		((t_room *)value)->ant_here, ((t_room *)value)->is_visited);
 	ft_putlst(((t_room *)value)->link, printlstvalue);
 }
 

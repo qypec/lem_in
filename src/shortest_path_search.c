@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/29 15:33:38 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 13:46:27 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@
 #define GET_ROOM(name) ((t_room *)(ft_mapvalue(g_graph->map, name)))
 #define CURRENT_LINK ((t_prev *)((*pathstack)->content))->current
 #define PREV_LINK ((t_prev *)((*pathstack)->content))->prev
+
+static void			set_zero_elem(t_list *elem)
+{
+	((t_room *)(((t_htab *)(elem->content))->value))->is_visited = 0;
+}
+
+static void			set_to_zero_isvisited_flag(void)
+{
+	size_t			i;
+	t_list			*maplst;
+
+	i = 0;
+	while (i < g_graph->map->size)
+	{
+		maplst = g_graph->map->array[i];
+		if (maplst != NULL)
+			ft_lstiter(maplst, set_zero_elem);
+		i++;
+	}
+}
 
 static t_list		*get_path(t_list **pathstack)
 {
@@ -45,7 +65,7 @@ static t_list		*get_path(t_list **pathstack)
 	return (result);
 }
 
-static void			link_brute_force(t_list **queue, t_list **pathstack, \
+static void			add_links_to_queue(t_list **queue, t_list **pathstack, \
 						t_list *link, char *parent_name)
 {
 	t_room			*room;
@@ -77,6 +97,7 @@ t_list				*shortest_path_search(void)
 	t_list			*pathstack;
 	t_room			*room;
 	char			*parent_name;
+	t_list			*result;
 
 	pathstack = NULL;
 	queue = NULL;
@@ -88,8 +109,10 @@ t_list				*shortest_path_search(void)
 			return (NULL);
 		parent_name = ft_strdup((char *)(queue->content));
 		ft_lstdelone(&queue, del_str_from_list);
-		link_brute_force(&queue, &pathstack, room->link, parent_name);
+		add_links_to_queue(&queue, &pathstack, room->link, parent_name);
 		ft_strdel(&parent_name);
 	}
-	return (get_path(&pathstack));
+	result = get_path(&pathstack);
+	set_to_zero_isvisited_flag();
+	return (result);
 }

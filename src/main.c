@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/29 15:28:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 13:34:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ int					main(void)
 	if ((g_graph = graphinit()) == NULL)
 		return (-1);
 	parsing();
-	// print_graph();
 	if ((spath = shortest_path_search()) == NULL)
 		error_processing(&spath);
-
+	print_graph();
 // debugging	
-	ft_printf("spath:\n");
-	ft_putlst(spath, &print);
+	// ft_printf("spath:\n");
+	// ft_putlst(spath, &print);
 	ft_lstdel(&spath, &spath_del);
 //
 

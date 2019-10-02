@@ -11,22 +11,12 @@ apple2 0 0
 ##end
 end 0 0
 start-triangle1
-triangle1-start
 start-square1
-square1-start
 triangle1-triangle2
-triangle2-triangle1
 triangle2-triangle3
-triangle3-triangle2
-#triangle3-end
-#end-triangle3
+triangle3-end
 square1-square2
-square2-square1
 square1-apple1
-apple1-square1
-#square2-end
-#end-square2
+square2-end
 apple1-apple2
-apple2-apple1
-#apple2-end
-end-apple2
+apple2-end
