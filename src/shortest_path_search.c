@@ -6,14 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 13:46:27 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 17:21:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-#define LINKS_NAME ((t_links *)(link->content))->name
-#define GET_ROOM(name) ((t_room *)(ft_mapvalue(g_graph->map, name)))
 #define CURRENT_LINK ((t_prev *)((*pathstack)->content))->current
 #define PREV_LINK ((t_prev *)((*pathstack)->content))->prev
 
