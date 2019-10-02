@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:32:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 18:49:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static t_list		*get_path(t_list **pathstack)
 	t_list			*result;
 	char			*prev_room_name;
 
+	g_lstsize = 0;
 	if (*pathstack == NULL)
 		return (NULL);
 	result = NULL;
@@ -52,12 +53,14 @@ static t_list		*get_path(t_list **pathstack)
 		{
 			ft_lstadd(&result, \
 				ft_lstnew(ft_strdup(CURRENT_LINK), sizeof(char *)));
+			g_lstsize++;
 			ft_strdel(&prev_room_name);
 			prev_room_name = ft_strdup(PREV_LINK);
 		}
 		ft_lstdelone(pathstack, del_prevroom);
 	}
 	ft_lstadd(&result, ft_lstnew(ft_strdup(START_ROOM), sizeof(char *)));
+	g_lstsize++;
 	ft_lstdel(pathstack, del_prevroom);
 	ft_strdel(&prev_room_name);
 	return (result);

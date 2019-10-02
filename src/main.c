@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:56:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/02 19:46:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ int					main(void)
 	if ((first_path = shortest_path_search()) == NULL)
 		error_processing(&first_path);
 	redirect_path_from_end_to_start(first_path);
-	paths = ft_lstnew(first_path, sizeof(t_list *));
+	paths = ft_lstnew(first_path, g_lstsize);
 	while ((path = shortest_path_search()) != NULL)
 	{
 		redirect_path_from_end_to_start(path);
-		ft_lstadd(&paths, ft_lstnew(path, sizeof(t_list *)));
+		if (paths->content_size > g_lstsize)
+			ft_lstadd(&paths, ft_lstnew(path, g_lstsize));
+		else
+			ft_lstaddhere(&paths, ft_lstnew(path, g_lstsize), 1);
 	}
 	// paths = find_optimum_ways(&paths);
 	// ants_run(paths);

@@ -58,6 +58,7 @@ typedef struct		s_graph
 }					t_graph;
 
 t_graph				*g_graph;
+size_t				g_lstsize;
 
 // debugging
 int					g_fd;

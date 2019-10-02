@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstaddhere.c                                    :+:      :+:    :+:   */
+/*   find_option_way.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 10:40:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 19:45:56 by yquaro           ###   ########.fr       */
+/*   Created: 2019/10/02 17:58:59 by yquaro            #+#    #+#             */
+/*   Updated: 2019/10/02 18:50:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lem_in.h"
 
-void				ft_lstaddhere(t_list **alst, t_list *new, size_t position)
+t_list				*find_optimum_ways(t_list *paths)
 {
-	while (*alst != NULL && position)
-	{
-		alst = &(*alst)->next;
-		position--;
-	}
-	if (position == 0)
-	{
-		new->next = *alst;
-		*alst = new;
-	}
+	
 }
