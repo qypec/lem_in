@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 16:20:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 17:30:17 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					main(void)
 			ft_lstaddhere(&paths, ft_lstnew(path, g_lstsize), 1);
 	}
 	find_optimum_ways(&paths, graph_copy);
-	// ants_run(paths);
+	ants_run(paths);
 
 // debugging output
 	// print_graph(g_graph);
