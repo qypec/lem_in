@@ -6,15 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 19:46:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 13:25:10 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 //
-
-void				print_paths(void *content);
 
 void				del_elem(void *content, size_t content_size)
 {
@@ -55,12 +53,12 @@ int					main(void)
 		else
 			ft_lstaddhere(&paths, ft_lstnew(path, g_lstsize), 1);
 	}
-	// paths = find_optimum_ways(&paths);
+	find_optimum_ways(&paths);
 	// ants_run(paths);
 
 // debugging output
-	// print_graph();
-	// ft_printf("paths:\n");
+	print_graph();
+	ft_printf("paths:____________________________________________\n");
 	ft_putlst(paths, &print_paths);
 //
 

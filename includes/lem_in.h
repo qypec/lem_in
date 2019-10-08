@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:34:19 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 12:55:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void				del_str_from_list(void *content, size_t content_size);
 
 //
 void				spath_del(void *str, size_t size);
+void				print_paths(void *content);
+void				del_elem(void *content, size_t content_size);
 //
 
 void				parsing(void);
@@ -91,6 +93,8 @@ void				add_number_of_ants(char **line);
 
 t_list				*shortest_path_search(void);
 void				redirect_path_from_end_to_start(t_list *path);
+void				delete_link(t_list **link, const char *del_link_name);
+void				find_optimum_ways(t_list **paths);
 
 void				error_processing_line(char **line);
 void				error_processing(t_list	**spath);
