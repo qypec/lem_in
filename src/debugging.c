@@ -13,13 +13,13 @@ void				printvalue(void *value)
 	ft_putlst(((t_room *)value)->link, printlstvalue);
 }
 
-void				print_graph(void)
+void				print_graph(t_graph *graph)
 {
 	ft_printf("graph:\n");
 	ft_printf("   number of ants: '%d'\n   start room: '%s'\n   end room: '%s'\n", \
-		g_graph->number_of_ants, g_graph->start, g_graph->end);
+		graph->number_of_ants, graph->start, graph->end);
 	ft_printf("map:\n");
-	ft_putmap(g_graph->map, &printvalue);
+	ft_putmap(graph->map, &printvalue);
 }
 
 void				print_paths(void *content)

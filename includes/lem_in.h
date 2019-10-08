@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 12:55:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 16:09:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define START_ROOM g_graph->start
 # define END_ROOM g_graph->end
 
-# define GET_ROOM(room_name) (t_room *)ft_mapvalue(g_graph->map, room_name)
+# define GET_ROOM(graph, room_name) (t_room *)ft_mapvalue(graph->map, room_name)
 # define LINKS_NAME(elem) ((t_links *)((elem)->content))->name
 
 typedef	struct		s_prev
@@ -62,7 +62,7 @@ size_t				g_lstsize;
 
 // debugging
 int					g_fd;
-void				print_graph(void);
+void				print_graph(t_graph *graph);
 //
 
 t_graph				*graphinit(void);
@@ -79,6 +79,7 @@ void				del_str_from_list(void *content, size_t content_size);
 void				spath_del(void *str, size_t size);
 void				print_paths(void *content);
 void				del_elem(void *content, size_t content_size);
+void				del_paths(void *content, size_t content_size);
 //
 
 void				parsing(void);
@@ -94,7 +95,7 @@ void				add_number_of_ants(char **line);
 t_list				*shortest_path_search(void);
 void				redirect_path_from_end_to_start(t_list *path);
 void				delete_link(t_list **link, const char *del_link_name);
-void				find_optimum_ways(t_list **paths);
+void				find_optimum_ways(t_list **paths, t_graph *graph);
 
 void				error_processing_line(char **line);
 void				error_processing(t_list	**spath);

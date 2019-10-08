@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:23:34 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 13:20:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 16:03:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void				redirect_path_from_end_to_start(t_list *path)
 
 	while (path->next != NULL)
 	{
-		prev_room = GET_ROOM(path->content);
-		current_room = GET_ROOM(path->next->content);
+		prev_room = GET_ROOM(g_graph, path->content);
+		current_room = GET_ROOM(g_graph, path->next->content);
 		ft_lstadd(&(current_room->link), ft_lstnew(linksinit(PREV_ROOM_NAME, 0), sizeof(t_links *)));
 		delete_link(&(prev_room->link), CURRENT_ROOM_NAME);
 		path = path->next;

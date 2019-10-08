@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mapdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/18 11:34:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 13:30:06 by yquaro           ###   ########.fr       */
+/*   Created: 2019/10/08 13:34:29 by yquaro            #+#    #+#             */
+/*   Updated: 2019/10/08 15:42:25 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_map.h"
 
-void				ft_mapdel(t_map **map)
+t_list				*ft_lstcpy(t_list *lst, void *(*cpy)(void *))
 {
-	size_t			i;
+	t_list			*newlst;
 
-	i = 0;
-	while (i < (*map)->size)
-		ft_mapdelind(map, i++);
-	free((*map)->array);
-	(*map)->array = NULL;
-	(*map)->size = 0;
-	(*map)->valuedel_func = NULL;
-	free(*map);
-	*map = NULL;
+	if (lst == NULL)
+		return (NULL);
+	newlst = NULL;
+	while (lst != NULL)
+	{
+		ft_lstpushback(&newlst, ft_lstnew(cpy(lst->content), lst->content_size));
+		lst = lst->next;
+	}
+	return (newlst);
 }

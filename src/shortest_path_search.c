@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/03 17:01:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 16:17:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_list				*shortest_path_search(void)
 	ft_lstpushback(&queue, ft_lstnew(ft_strdup(START_ROOM), sizeof(char *)));
 	while (queue != NULL)
 	{
-		if ((room = (t_room *)GET_ROOM(queue->content)) == NULL)
+		if ((room = (t_room *)GET_ROOM(g_graph, queue->content)) == NULL)
 			return (NULL);
 		parent_name = ft_strdup((char *)(queue->content));
 		ft_lstdelone(&queue, del_str_from_list);

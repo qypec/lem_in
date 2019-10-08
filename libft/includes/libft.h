@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 17:11:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/08 15:36:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void					ft_lstdelthis(t_list **alst, size_t lstnum, \
 void					ft_lstdeltail(t_list **alst, void (*del)(void *, size_t));
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list					*ft_lstcpy(t_list *lst, void *(*cpy)(void *));
 void					ft_putlst(t_list *alst, void (*print)(void *));
 size_t					ft_lstsize(t_list *alst);
 
@@ -122,6 +123,7 @@ const void			*ft_mapvalue(t_map *map, const char *key);
 void				ft_mapdel(t_map **map);
 void				ft_mapdelind(t_map **map, size_t index);
 void				ft_mapdelkey(t_map **map, const char *key);
+t_map				*ft_mapcpy(t_map *map, void *(*cpy)(void *));
 void				ft_putmap(t_map *map, void (*printvalue)(void *));
 
 /*
