@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/02 13:24:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/09 16:48:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void				parsing(void)
 	int				ret;
 
 	line = NULL;
-	while ((ret = get_next_line(0, &line)) > 0)
+	while ((ret = get_next_line(g_fd, &line)) > 0)
 	{
 		if (ret == 1)
 			error_processing_line(&line);
