@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/09 16:49:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/10 18:16:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int					main(void)
 	t_graph		*graph_copy;
 
 // debugging open file
-	g_fd = open("test.map.optimum_way", O_RDONLY);
+	// g_fd = open("test.map.optimum_way", O_RDONLY);
 //
 
 	paths = NULL;
@@ -87,7 +87,6 @@ int					main(void)
 			ft_lstaddhere(&paths, ft_lstnew(path, g_lstsize), 1);
 	}
 	find_optimum_ways(&paths, graph_copy);
-	ants_run(paths);
 
 // debugging output
 	// print_graph(g_graph);
@@ -96,12 +95,12 @@ int					main(void)
 	// ft_printf("paths:____________________________________________\n");
 	// ft_putlst(paths, &print_paths);
 //
-
+	ants_run(paths);
 	// ft_lstdel(&first_path, del_elem);
 	ft_lstdel(&paths, del_paths);
 	graphdel(&g_graph);
 
 // debugging close file
-	close(g_fd);
+	// close(g_fd);
 //
 }

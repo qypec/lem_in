@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:58:59 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 16:18:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/10 17:12:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void				delete_links_between_same_rooms(t_graph *graph, t_list **same_room)
 	t_list			*tmp;
 	const char		*del_room_name;
 
-	tmp = (*same_room);
+	if ((tmp = (*same_room)) == NULL)
+		return ;
 	while (tmp->next != NULL)
 	{
 		prev_room = GET_ROOM(graph, tmp->content);
