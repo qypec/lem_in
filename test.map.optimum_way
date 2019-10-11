@@ -7,6 +7,7 @@ s1 0 0
 s2 0 0
 q1 0 0
 q2 0 0
+q3 0 0
 t1 0 0
 t2 0 0
 start-s1
@@ -17,4 +18,5 @@ t1-t2
 q1-q2
 s2-end
 t2-s2
-q2-end
+q2-q3
+q3-end

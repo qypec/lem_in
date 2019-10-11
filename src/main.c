@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/11 18:28:39 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/11 20:41:27 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,11 @@ int					main(void)
 	// ft_printf("graph_copy:____________________________________________\n");
 	// print_graph(graph_copy);
 	// ft_printf("paths:____________________________________________\n");
-	ft_putlst(paths, &print_paths);
+	// ft_putlst(paths, &print_paths);
 	// print_paths(paths);
 //
 	// ants_run(paths);
+	run_ants(paths);
 	// ft_lstdel(&first_path, del_elem);
 	ft_lstdel(&paths, del_paths);
 	graphdel(&g_graph);

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/11 17:29:16 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:43:27 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);
 
 void				ants_run(t_list *paths);
+void				run_ants(t_list *paths);
 
 void				error_processing_line(char **line);
 void				error_processing(t_list	**spath);
