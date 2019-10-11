@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_optimum_way.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:58:59 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/10 17:12:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/11 18:29:05 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,16 @@ void				find_optimum_ways(t_list **paths, t_graph *graph)
 	ft_lstdel(paths, del_paths);
 	graphdel(&g_graph);
 	g_graph = graph;
-	*paths = ft_lstnew((path = shortest_path_search()), g_lstsize);
+	path = shortest_path_search();
+	*paths = ft_lstnew(path, path->content_size);
 	redirect_path_from_end_to_start(path);
 	while ((path = shortest_path_search()) != NULL)
 	{
 		redirect_path_from_end_to_start(path);
-		if ((*paths)->content_size > g_lstsize)
-			ft_lstadd(paths, ft_lstnew(path, g_lstsize));
-		else
-			ft_lstaddhere(paths, ft_lstnew(path, g_lstsize), 1);
+		// if ((*paths)->content_size > g_lstsize)
+		// 	ft_lstadd(paths, ft_lstnew(path, g_lstsize));
+		// else
+		// 	ft_lstaddhere(paths, ft_lstnew(path, g_lstsize), 1);
+		add_path_from_min_to_max(paths, path);
 	}
 }

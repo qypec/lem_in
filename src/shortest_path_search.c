@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shortest_path_search.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 16:17:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/10 21:21:17 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ static t_list		*get_path(t_list **pathstack)
 	g_lstsize++;
 	ft_lstdel(pathstack, del_prevroom);
 	ft_strdel(&prev_room_name);
+	/*
+	** add path length to content size of list
+	*/
+	result->content_size = g_lstsize;
 	return (result);
 }
 

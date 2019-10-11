@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/10 15:05:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/11 17:29:16 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void				add_room(char **line);
 void				add_number_of_ants(char **line);
 
 t_list				*shortest_path_search(void);
+void				add_path_from_min_to_max(t_list **paths, t_list *new_path);
 void				redirect_path_from_end_to_start(t_list *path);
 void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);

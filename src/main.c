@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/10 18:16:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/11 18:28:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,33 @@ t_graph				*graphcpy(t_graph *graph)
 	return (newgraph);
 }
 
+void				add_path_from_min_to_max(t_list **paths, t_list *new_path)
+{
+	t_list			*paths_tmp;
+	size_t			position;
+
+	paths_tmp = (*paths);
+	position = 1;
+	while (paths_tmp)
+	{
+		if (paths_tmp->content_size <= new_path->content_size)
+		{
+			if (paths_tmp->next)
+			{
+				if (paths_tmp->next->content_size > new_path->content_size)
+					position--;
+			}
+			else
+			{
+				ft_lstaddhere(paths, ft_lstnew(new_path, g_lstsize), position);
+				break ;
+			}
+		}
+		position++;
+		paths_tmp = paths_tmp->next;
+	}
+}
+
 int					main(void)
 {	
 	t_list		*paths;
@@ -77,15 +104,27 @@ int					main(void)
 	if ((first_path = shortest_path_search()) == NULL)
 		error_processing(&first_path);
 	redirect_path_from_end_to_start(first_path);
-	paths = ft_lstnew(first_path, g_lstsize);
+
+	// paths = ft_lstnew(first_path, g_lstsize);
+
+	/*
+	** send to lstnew fun list content size, not global size
+	*/
+	paths = ft_lstnew(first_path, first_path->content_size);
 	while ((path = shortest_path_search()) != NULL)
 	{
 		redirect_path_from_end_to_start(path);
-		if (paths->content_size > g_lstsize)
-			ft_lstadd(&paths, ft_lstnew(path, g_lstsize));
-		else
-			ft_lstaddhere(&paths, ft_lstnew(path, g_lstsize), 1);
+		add_path_from_min_to_max(&paths, path);
 	}
+	// print_paths(paths);
+	// while ((path = shortest_path_search()) != NULL)
+	// {
+	// 	redirect_path_from_end_to_start(path);
+	// 	if (paths->content_size > g_lstsize)
+	// 		ft_lstadd(&paths, ft_lstnew(path, g_lstsize));
+	// 	else
+	// 		ft_lstaddhere(&paths, ft_lstnew(path, g_lstsize), 1);
+	// }
 	find_optimum_ways(&paths, graph_copy);
 
 // debugging output
@@ -93,9 +132,10 @@ int					main(void)
 	// ft_printf("graph_copy:____________________________________________\n");
 	// print_graph(graph_copy);
 	// ft_printf("paths:____________________________________________\n");
-	// ft_putlst(paths, &print_paths);
+	ft_putlst(paths, &print_paths);
+	// print_paths(paths);
 //
-	ants_run(paths);
+	// ants_run(paths);
 	// ft_lstdel(&first_path, del_elem);
 	ft_lstdel(&paths, del_paths);
 	graphdel(&g_graph);
