@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   jumper__sps.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 10:57:23 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/12 16:31:08 by yquaro           ###   ########.fr       */
+/*   Created: 2019/10/12 16:22:14 by yquaro            #+#    #+#             */
+/*   Updated: 2019/10/12 16:25:55 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef JUMPER_SPS_H
+# define JUMPER_SPS_H
 
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem))
-{
-	while (lst != NULL)
-	{
-		f(lst);
-		lst = lst->next;
-	}
-}
+# define __INIT__ 1
+# define INCREMET 2
+# define GET 3
+
+size_t				jumper__sps(size_t method);
+
+#endif
