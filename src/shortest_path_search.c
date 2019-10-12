@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   shortest_path_search.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/10 21:21:17 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/12 17:15:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "jumper__sps.h"
 
 #define CURRENT_LINK ((t_prev *)((*pathstack)->content))->current
 #define PREV_LINK ((t_prev *)((*pathstack)->content))->prev
@@ -29,8 +30,7 @@ static void			set_to_zero_isvisited_flag(void)
 	while (i < g_graph->map->size)
 	{
 		maplst = g_graph->map->array[i];
-		if (maplst != NULL)
-			ft_lstiter(maplst, set_zero_elem);
+		ft_lstiter(maplst, set_zero_elem);
 		i++;
 	}
 }
@@ -40,7 +40,6 @@ static t_list		*get_path(t_list **pathstack)
 	t_list			*result;
 	char			*prev_room_name;
 
-	g_lstsize = 0;
 	if (*pathstack == NULL)
 		return (NULL);
 	result = NULL;
@@ -53,20 +52,16 @@ static t_list		*get_path(t_list **pathstack)
 		{
 			ft_lstadd(&result, \
 				ft_lstnew(ft_strdup(CURRENT_LINK), sizeof(char *)));
-			g_lstsize++;
+			jumper__sps(INCREMET);
 			ft_strdel(&prev_room_name);
 			prev_room_name = ft_strdup(PREV_LINK);
 		}
 		ft_lstdelone(pathstack, del_prevroom);
 	}
 	ft_lstadd(&result, ft_lstnew(ft_strdup(START_ROOM), sizeof(char *)));
-	g_lstsize++;
+	jumper__sps(INCREMET);
 	ft_lstdel(pathstack, del_prevroom);
 	ft_strdel(&prev_room_name);
-	/*
-	** add path length to content size of list
-	*/
-	result->content_size = g_lstsize;
 	return (result);
 }
 
@@ -104,6 +99,7 @@ t_list				*shortest_path_search(void)
 	char			*parent_name;
 	t_list			*result;
 
+	jumper__sps(__INIT__);
 	pathstack = NULL;
 	queue = NULL;
 	parent_name = NULL;

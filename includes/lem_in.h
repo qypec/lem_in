@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/11 18:43:27 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/12 18:06:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct		s_graph
 }					t_graph;
 
 t_graph				*g_graph;
-size_t				g_lstsize;
 
 // debugging
 int					g_fd;
@@ -95,9 +94,10 @@ void				add_end_room(char **line);
 void				add_room(char **line);
 void				add_number_of_ants(char **line);
 
+t_list				*create_list_of_paths(void);
 t_list				*shortest_path_search(void);
-void				add_path_from_min_to_max(t_list **paths, t_list *new_path);
-void				redirect_path_from_end_to_start(t_list *path);
+void				redirect_path(t_list *path);
+void				add_path_in_sorting_order(t_list **allpaths, t_list *new_path);
 void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);
 

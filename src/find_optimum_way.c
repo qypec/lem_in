@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_optimum_way.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:58:59 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/11 18:29:05 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/12 18:16:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,5 @@ void				find_optimum_ways(t_list **paths, t_graph *graph)
 	ft_lstdel(paths, del_paths);
 	graphdel(&g_graph);
 	g_graph = graph;
-	path = shortest_path_search();
-	*paths = ft_lstnew(path, path->content_size);
-	redirect_path_from_end_to_start(path);
-	while ((path = shortest_path_search()) != NULL)
-	{
-		redirect_path_from_end_to_start(path);
-		// if ((*paths)->content_size > g_lstsize)
-		// 	ft_lstadd(paths, ft_lstnew(path, g_lstsize));
-		// else
-		// 	ft_lstaddhere(paths, ft_lstnew(path, g_lstsize), 1);
-		add_path_from_min_to_max(paths, path);
-	}
+	*paths = create_list_of_paths();
 }
