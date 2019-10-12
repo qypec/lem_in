@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/11 20:41:27 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/12 18:40:10 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,8 @@ int					main(void)
 	// ants_run(paths);
 	run_ants(paths);
 	// ft_lstdel(&first_path, del_elem);
-	ft_lstdel(&paths, del_paths);
-	graphdel(&g_graph);
+	// ft_lstdel(&paths, del_paths);
+	// graphdel(&g_graph);
 
 // debugging close file
 	// close(g_fd);
