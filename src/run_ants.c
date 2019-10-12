@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:42:51 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/12 18:55:09 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/12 19:07:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ t_ways**	copy_all_paths(t_list *paths)
 	head = paths;
 	tmp = (t_list*)paths->content;
 	num_of_paths = ft_lstsize(paths);
-	ways = (t_ways**)malloc(sizeof(t_ways*) * num_of_paths + 1); 
+	ways = (t_ways**)malloc(sizeof(t_ways*) * (num_of_paths + 1)); 
 	while (head)
 	{
 		tmp = (t_list*)head->content;
 		ways[i] = (t_ways*)malloc(sizeof(t_ways));
 		ways[i]->way = (t_way*)malloc(sizeof(t_way) * head->content_size);
-		ways[i]->length = tmp->content_size;
+		ways[i]->length = head->content_size;
 		ways[i]->ants_q = 0;
 		ways[i]->ants_end = 0;
 		copy_one_path(tmp, ways[i]->way);
@@ -161,6 +161,13 @@ void	run_ants(t_list *paths)
 	i = 0;
 	j = 1;
 	ant_index = 0;
+	// 	for (int i = 0; i < num_of_paths; i++)
+	// {
+	// 	ft_printf("PATH NUM: %d ANTS QUEUE %d\n", i, ways[i]->ants_q);
+	// 	for (int j = 1; j < ways[i]->length; j++) {
+	// 			ft_printf("L%d-%s\n", ways[i]->way[j].ant, ways[i]->way[j].room);
+	// 	}
+	// }
 	while (1)
 	{
 		j = 1;
