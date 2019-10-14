@@ -38,7 +38,7 @@ size_t	fill_queue(t_ways **ways, size_t border_number, size_t diff)
 	return (num_of_ants);
 }
 
-void	calc_ants_queue(t_ways **ways, size_t num_of_paths)
+void	calc_ants_queue(t_ways **ways)
 {
 	size_t	i;
 	size_t	num_of_ants;

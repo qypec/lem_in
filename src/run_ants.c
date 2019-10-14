@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_ants.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:42:51 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/14 20:39:41 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/14 21:38:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ void	push_ants(t_ways **ways, size_t i, size_t j)
 
 size_t	move_ants(t_ways **ways, size_t i)
 {
-	size_t	j;
-	size_t	ant_index;
+	size_t			j;
+	static size_t	ant_index;
 
-	ant_index = 0;
 	j = 1;
 	while (ways[i]->ants_q != -1)
 	{
@@ -94,13 +93,10 @@ void	running(t_ways **ways)
 
 void	run_ants(t_list *paths)
 {
-	size_t			num_of_paths;
 	t_ways			**ways;
-	size_t			ant_index;
 
 	ways = copy_all_paths(paths);
-	num_of_paths = ft_lstsize(paths);
-	calc_ants_queue(ways, num_of_paths);
+	calc_ants_queue(ways);
 	set_to_minus_useless_paths(ways);
 	running(ways);
 	delete_array_of_paths(ways);

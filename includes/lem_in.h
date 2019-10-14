@@ -88,7 +88,7 @@ void				find_optimum_ways(t_list **paths, t_graph *graph);
 
 void				run_ants(t_list *paths);
 t_ways				**copy_all_paths(t_list *paths);
-void				calc_ants_queue(t_ways **ways, size_t num_of_paths);
+void				calc_ants_queue(t_ways **ways);
 void				set_to_minus_useless_paths(t_ways **ways);
 void				delete_array_of_paths(t_ways **ways);
 
