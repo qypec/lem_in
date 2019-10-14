@@ -31,3 +31,12 @@ void				print_paths(void *content)
 {
 	ft_putlst((t_list *)content, put_str);
 }
+
+	// for (int i = 0; ways[i]->ants_q != -1; i++)
+	// {
+	// 	ft_printf("PATH NUM: %d LEN %d ANTS %d\n", i, ways[i]->length, ways[i]->ants_q);
+	// 	// for (int j = 1; j < ways[i]->length; j++) {
+	// 	// 		ft_printf("[%s]", ways[i]->way[j].room);
+	// 	// }
+	// 	write(1, "\n", 1);
+	// }

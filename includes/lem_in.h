@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 13:10:43 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 20:26:59 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@
 
 # define GET_ROOM(graph, room_name) (t_room *)ft_mapvalue(graph->map, room_name)
 # define LINKS_NAME(elem) ((t_links *)((elem)->content))->name
+
+typedef struct		s_way
+{
+	char			*room;
+	size_t			ant;
+}					t_way;
+
+typedef struct		s_ways
+{
+	t_way			*way;
+	size_t			length;
+	int				ants_q;
+	size_t			ants_end;
+	size_t			ants;
+}					t_ways;
 
 typedef	struct		s_prev
 {
@@ -80,6 +95,11 @@ void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);
 
 void				run_ants(t_list *paths);
+t_ways**			copy_all_paths(t_list *paths);
+void				calc_ants_queue(t_ways** ways, size_t num_of_paths);
+void				set_to_minus_useless_paths(t_ways **ways);
+
+void				print_rooms(t_ways **ways);
 
 void				error_processing_line(char **line);
 void				error_processing(t_list	**spath);

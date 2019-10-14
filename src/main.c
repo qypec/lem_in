@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:22:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 13:06:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 18:28:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int					main(void)
 	parsing();
 	graph_copy = graphcpy(g_graph);
 	paths = create_list_of_paths();
+	// ft_printf("graph_copy:____________________________________________\n");
 	find_optimum_ways(&paths, graph_copy);
 
 // debugging output
