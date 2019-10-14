@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/12 17:15:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 12:05:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void			add_links_to_queue(t_list **queue, t_list **pathstack, \
 					sizeof(t_prev *)));
 			if (ft_strequ(LINKS_NAME(link), END_ROOM))
 			{
-				ft_lstdel(queue, del_str_from_list);
+				ft_lstdel(queue, __delfunc_lst__str);
 				break ;
 			}
 		}
@@ -109,7 +109,7 @@ t_list				*shortest_path_search(void)
 		if ((room = (t_room *)GET_ROOM(g_graph, queue->content)) == NULL)
 			return (NULL);
 		parent_name = ft_strdup((char *)(queue->content));
-		ft_lstdelone(&queue, del_str_from_list);
+		ft_lstdelone(&queue, __delfunc_lst__str);
 		add_links_to_queue(&queue, &pathstack, room->link, parent_name);
 		ft_strdel(&parent_name);
 	}

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _delfunc_.c                                        :+:      :+:    :+:   */
+/*   __delfunc__.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/14 11:29:53 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 11:33:58 by yquaro           ###   ########.fr       */
+/*   Created: 2019/10/14 11:54:44 by yquaro            #+#    #+#             */
+/*   Updated: 2019/10/14 11:57:57 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-//
-void				del_elem(void *content, size_t content_size)
+void					__delfunc_lst__str(void *content, size_t content_size)
 {
 	ft_strdel((char **)&content);
 	content_size = 0;
 }
 
-void				del_paths(void *content, size_t content_size)
+void					__delfunc_lst__list(void *content, size_t content_size)
 {
-	ft_lstdel((t_list **)&content, del_elem);
-	content_size = 0;
-}
-//
-
-void				del_str_from_list(void *content, size_t content_size)
-{
-	ft_strdel((char **)&content);
+	ft_lstdel((t_list **)&content, __delfunc_lst__str);
 	content_size = 0;
 }

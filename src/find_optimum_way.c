@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:58:59 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/12 18:16:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 12:03:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void				delete_links_between_same_rooms(t_graph *graph, t_list **same_room)
 		delete_link(&(prev_room->link), tmp->content);
 		delete_link(&(next_room->link), del_room_name);
 	}
-	ft_lstdel(same_room, del_elem);
+	ft_lstdel(same_room, __delfunc_lst__str);
 }
 
 t_list				*find_same_rooms(t_list *shortest_path, t_list *path)
@@ -74,7 +74,7 @@ void				find_optimum_ways(t_list **paths, t_graph *graph)
 		delete_links_between_same_rooms(graph, &same_room);
 		tmp = tmp->next;
 	}
-	ft_lstdel(paths, del_paths);
+	ft_lstdel(paths, __delfunc_lst__list);
 	graphdel(&g_graph);
 	g_graph = graph;
 	*paths = create_list_of_paths();

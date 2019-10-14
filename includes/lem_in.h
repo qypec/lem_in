@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 11:44:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 12:08:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,9 @@ t_links				*linksinit(const char *name, int wt);
 void				linksdel(void *content, size_t content_size);
 t_prev				*prev_room_init(char *current, char *prev_str);
 void				del_prevroom(void *content, size_t content_size);
-void				del_str_from_list(void *content, size_t content_size);
 
 //
-void				spath_del(void *str, size_t size);
 void				print_paths(void *content);
-void				del_elem(void *content, size_t content_size);
-void				del_paths(void *content, size_t content_size);
 //
 
 void				parsing(void);

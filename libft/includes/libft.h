@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 15:36:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 11:58:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list					*ft_lstcpy(t_list *lst, void *(*cpy)(void *));
 void					ft_putlst(t_list *alst, void (*print)(void *));
 size_t					ft_lstsize(t_list *alst);
+
+void					__delfunc_lst__str(void *content, size_t content_size);
+void					__delfunc_lst__list(void *content, size_t content_size);
 
 /*
 ** ft_dbllist
