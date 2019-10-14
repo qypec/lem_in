@@ -22,7 +22,12 @@ void				print_graph(t_graph *graph)
 	ft_putmap(graph->map, &printvalue);
 }
 
+void				put_str(void *content)
+{
+	ft_putstr((char *)content);
+}
+
 void				print_paths(void *content)
 {
-	ft_putlst((t_list *)content, ft_putstr);
+	ft_putlst((t_list *)content, put_str);
 }

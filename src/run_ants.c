@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_ants.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:42:51 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/12 19:07:39 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/14 13:20:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	calc_ants_queue(t_ways** ways, size_t num_of_paths)
 		if (num_of_ants <= 0)
 			break ;
 		diff = ways[i + 1]->length - ways[i]->length;
-		if (diff > num_of_ants)
+		if (diff > (int)num_of_ants)
 			diff = num_of_ants;
 		ways[i]->ants_q += diff;
 		num_of_ants -= diff;
@@ -188,7 +188,7 @@ void	run_ants(t_list *paths)
 				{
 					ways[i]->ants_end++;
 					ways[i]->way[j].ant = 0;
-					if (ways[i]->ants_q == ways[i]->ants_end)
+					if (ways[i]->ants_q == (int)ways[i]->ants_end)
 						ways[i]->ants_q = -1;
 				}
 				ways[i]->way[j - 1].ant = 0;
@@ -208,7 +208,7 @@ void	run_ants(t_list *paths)
 		c++;
 		for (int i = 0; ways[i]->ants_q != -1; i++)
 		{
-			for (int j = 1; j < ways[i]->length; j++) {
+			for (int j = 1; j < (int)ways[i]->length; j++) {
 				if (ways[i]->way[j].ant != 0)
 					ft_printf("L%d-%s ", ways[i]->way[j].ant, ways[i]->way[j].room);
 			}

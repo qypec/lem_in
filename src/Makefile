@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/13 21:16:45 by yquaro            #+#    #+#              #
-#    Updated: 2019/10/14 13:11:47 by yquaro           ###   ########.fr        #
+#    Updated: 2019/10/14 13:21:11 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ print:
 linkage:
 	@make -C __init__/ all
 	@make -C parsing/ all
+	@echo \*\*\* Compiling other
 
 $(DIR_O)/%.o: %.c
 	$(COMPILING) $< -o $@

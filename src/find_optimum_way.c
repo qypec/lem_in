@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:58:59 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 12:03:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 13:19:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void				find_optimum_ways(t_list **paths, t_graph *graph)
 {
 	t_list			*tmp;
 	t_list			*shortest_path;
-	t_list			*path;
 	t_list			*same_room;
 
 	tmp = *paths;
