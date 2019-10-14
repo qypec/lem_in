@@ -6,11 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/09 16:48:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 12:18:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "parse.h"
 
 int					is_room_name(char *line)
 {

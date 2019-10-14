@@ -6,11 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:17:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/25 05:51:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 12:17:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "parse.h"
 
 static void			*what_is_comment_line(char **line)
 {

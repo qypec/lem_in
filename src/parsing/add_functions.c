@@ -6,11 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 02:56:33 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/10 18:16:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 12:17:35 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "parse.h"
 
 void				add_room_link(char **line)
 {
