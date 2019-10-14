@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 16:36:11 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/12 18:11:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 21:06:27 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ void				redirect_path(t_list *path)
 	{
 		prev_room = GET_ROOM(g_graph, path->content);
 		current_room = GET_ROOM(g_graph, path->next->content);
-		ft_lstadd(&(current_room->link), ft_lstnew(linksinit(PREV_ROOM_NAME, 0), sizeof(t_links *)));
+		ft_lstadd(&(current_room->link), \
+			ft_lstnew(linksinit(PREV_ROOM_NAME, 0), sizeof(t_links *)));
 		delete_link(&(prev_room->link), CURRENT_ROOM_NAME);
 		path = path->next;
 	}
 }
 
-void				add_path_in_sorting_order(t_list **allpaths, t_list *new_path)
+void				add_path_in_sorting_order(t_list **allpaths, \
+						t_list *new_path)
 {
 	size_t			newpath_size;
 	t_list			*tmp;

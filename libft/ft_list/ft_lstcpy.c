@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:34:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/08 15:42:25 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 21:18:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_list				*ft_lstcpy(t_list *lst, void *(*cpy)(void *))
 	newlst = NULL;
 	while (lst != NULL)
 	{
-		ft_lstpushback(&newlst, ft_lstnew(cpy(lst->content), lst->content_size));
+		ft_lstpushback(&newlst, ft_lstnew(cpy(lst->content), \
+			lst->content_size));
 		lst = lst->next;
 	}
 	return (newlst);

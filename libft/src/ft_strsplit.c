@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 14:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2019/09/18 15:43:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 21:10:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t				get_split_len(const char *s, int c)
 char				**ft_strsplit(char const *s, char c)
 {
 	char			**matr;
-	const char 		*c_ptr;
+	const char		*c_ptr;
 	size_t			len;
 	size_t			i;
 

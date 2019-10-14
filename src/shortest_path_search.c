@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 13:10:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 20:54:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ static t_list		*get_path(t_list **pathstack)
 	t_list			*result;
 	char			*prev_room_name;
 
-	if (*pathstack == NULL)
-		return (NULL);
 	result = NULL;
 	if (!ft_strequ(CURRENT_LINK, END_ROOM))
 		return (ft_lstdel(pathstack, del_prevroom));
@@ -83,7 +81,7 @@ static void			add_links_to_queue(t_list **queue, t_list **pathstack, \
 					sizeof(t_prev *)));
 			if (ft_strequ(LINKS_NAME(link), END_ROOM))
 			{
-				ft_lstdel(queue, __delfunc_lst__str);
+				ft_lstdel(queue, delfunc_lst__str);
 				break ;
 			}
 		}
@@ -102,6 +100,7 @@ t_list				*shortest_path_search(void)
 	jumper__sps(__INIT__);
 	pathstack = NULL;
 	queue = NULL;
+	result = NULL;
 	parent_name = NULL;
 	ft_lstpushback(&queue, ft_lstnew(ft_strdup(START_ROOM), sizeof(char *)));
 	while (queue != NULL)
@@ -109,11 +108,12 @@ t_list				*shortest_path_search(void)
 		if ((room = (t_room *)GET_ROOM(g_graph, queue->content)) == NULL)
 			return (NULL);
 		parent_name = ft_strdup((char *)(queue->content));
-		ft_lstdelone(&queue, __delfunc_lst__str);
+		ft_lstdelone(&queue, delfunc_lst__str);
 		add_links_to_queue(&queue, &pathstack, room->link, parent_name);
 		ft_strdel(&parent_name);
 	}
-	result = get_path(&pathstack);
+	if (pathstack != NULL)
+		result = get_path(&pathstack);
 	set_to_zero_isvisited_flag();
 	return (result);
 }

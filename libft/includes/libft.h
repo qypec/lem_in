@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 11:58:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 21:12:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,42 +69,25 @@ typedef struct			s_list
 
 t_list					*ft_lstnew(void *content, size_t content_size);
 void					ft_lstadd(t_list **alst, t_list *new);
-void					ft_lstaddhere(t_list **alst, t_list *new, size_t position);
+void					ft_lstaddhere(t_list **alst, t_list *new, \
+							size_t position);
 void					ft_lstpushback(t_list **alst, t_list *new);
-void					*ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void					ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void					*ft_lstdel(t_list **alst, \
+							void (*del)(void *, size_t));
+void					ft_lstdelone(t_list **alst, \
+							void (*del)(void *, size_t));
 void					ft_lstdelthis(t_list **alst, size_t lstnum, \
-													void (*del)(void *, size_t));
-void					ft_lstdeltail(t_list **alst, void (*del)(void *, size_t));
+							void (*del)(void *, size_t));
+void					ft_lstdeltail(t_list **alst, \
+							void (*del)(void *, size_t));
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list					*ft_lstcpy(t_list *lst, void *(*cpy)(void *));
 void					ft_putlst(t_list *alst, void (*print)(void *));
 size_t					ft_lstsize(t_list *alst);
 
-void					__delfunc_lst__str(void *content, size_t content_size);
-void					__delfunc_lst__list(void *content, size_t content_size);
-
-/*
-** ft_dbllist
-*/
-
-typedef struct			s_dbllist
-{
-	void				*content;
-	size_t				content_size;
-	struct s_dbllist	*next;
-	struct s_dbllist	*prev;
-}						t_dbllist;
-
-t_dbllist				*ft_dbllstnew(void *content, size_t content_size);
-void					ft_dbllstadd(t_dbllist **alst, t_dbllist *new);
-void					ft_dbllstpushback(t_dbllist **alst, t_dbllist *new);
-void					ft_dbllstdel(t_dbllist **alst, \
-										void (*del)(void *, size_t));
-void					ft_dbllstdelone(t_dbllist **alst, \
-											void (*del)(void *, size_t));
-void					ft_putdbllst(t_dbllist *alst, void (*print)(void *));
+void					delfunc_lst__str(void *content, size_t content_size);
+void					delfunc_lst__list(void *content, size_t content_size);
 
 /*
 ** ft_map
@@ -119,15 +102,15 @@ typedef struct			s_map
 	void				*valuedel_func;
 }						t_map;
 
-t_map				*ft_mapinit(size_t mapsize, void *valuedel_func);
-void				ft_mapinsert(t_map *map, const char *key, void *value);
-int					ft_ismapitem(t_map *map, const char *key);
-const void			*ft_mapvalue(t_map *map, const char *key);
-void				ft_mapdel(t_map **map);
-void				ft_mapdelind(t_map **map, size_t index);
-void				ft_mapdelkey(t_map **map, const char *key);
-t_map				*ft_mapcpy(t_map *map, void *(*cpy)(void *));
-void				ft_putmap(t_map *map, void (*printvalue)(void *));
+t_map					*ft_mapinit(size_t mapsize, void *valuedel_func);
+void					ft_mapinsert(t_map *map, const char *key, void *value);
+int						ft_ismapitem(t_map *map, const char *key);
+const void				*ft_mapvalue(t_map *map, const char *key);
+void					ft_mapdel(t_map **map);
+void					ft_mapdelind(t_map **map, size_t index);
+void					ft_mapdelkey(t_map **map, const char *key);
+t_map					*ft_mapcpy(t_map *map, void *(*cpy)(void *));
+void					ft_putmap(t_map *map, void (*printvalue)(void *));
 
 /*
 ** ft_math

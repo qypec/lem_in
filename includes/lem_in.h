@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 20:38:55 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/14 21:15:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,6 @@ typedef struct		s_graph
 
 t_graph				*g_graph;
 
-// debugging
-int					g_fd;
-void				print_graph(t_graph *graph);
-//
-
 void				parsing(void);
 t_graph				*graphinit(void);
 void				graphdel(t_graph **graph);
@@ -83,20 +78,17 @@ void				linksdel(void *content, size_t content_size);
 t_prev				*prevroom_init(char *current, char *prev_str);
 void				del_prevroom(void *content, size_t content_size);
 
-//
-void				print_paths(void *content);
-//
-
 t_list				*create_list_of_paths(void);
 t_list				*shortest_path_search(void);
 void				redirect_path(t_list *path);
-void				add_path_in_sorting_order(t_list **allpaths, t_list *new_path);
+void				add_path_in_sorting_order(t_list **allpaths, \
+						t_list *new_path);
 void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);
 
 void				run_ants(t_list *paths);
-t_ways**			copy_all_paths(t_list *paths);
-void				calc_ants_queue(t_ways** ways, size_t num_of_paths);
+t_ways				**copy_all_paths(t_list *paths);
+void				calc_ants_queue(t_ways **ways, size_t num_of_paths);
 void				set_to_minus_useless_paths(t_ways **ways);
 void				delete_array_of_paths(t_ways **ways);
 

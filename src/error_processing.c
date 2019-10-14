@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:22:18 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 12:08:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 21:13:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void				error_processing_line(char **line)
 	exit(1);
 }
 
-void				error_processing(t_list	**spath)
+void				error_processing(t_list **spath)
 {
-	ft_lstdel(spath, __delfunc_lst__str);
+	ft_lstdel(spath, delfunc_lst__str);
 	graphdel(&g_graph);
 	ft_printf("ERROR\n");
 	exit(1);
