@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 11:34:22 by yquaro            #+#    #+#              #
-#    Updated: 2019/10/14 12:08:51 by yquaro           ###   ########.fr        #
+#    Updated: 2019/10/14 13:08:56 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ HEADER_H = -I ../../includes/
 COMPILING = $(CC) $(CFLAGS) $(HEADER_H)
 
 DIR_O = ../../lib
-SOURCES = __init__graph.c __init__links.c __init__room.c graph_cpy.c
+SOURCES = __init__graph.c __init__links.c __init__room.c graph_cpy.c \
+			__init__prevroom.c
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 

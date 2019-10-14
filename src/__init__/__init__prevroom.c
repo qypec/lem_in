@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   __init__prevroom.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 12:18:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 11:36:30 by yquaro           ###   ########.fr       */
+/*   Created: 2019/10/14 13:08:23 by yquaro            #+#    #+#             */
+/*   Updated: 2019/10/14 13:09:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_prev				*prev_room_init(char *current, char *prev_str)
+t_prev				*prevroom_init(char *current, char *prev_str)
 {
 	t_prev			*prev;
 

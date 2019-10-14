@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 12:31:25 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 13:10:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,12 @@ t_room				*roominit(void);
 void				roomdel(void **room);
 t_links				*linksinit(const char *name, int wt);
 void				linksdel(void *content, size_t content_size);
-t_prev				*prev_room_init(char *current, char *prev_str);
+t_prev				*prevroom_init(char *current, char *prev_str);
 void				del_prevroom(void *content, size_t content_size);
 
 //
 void				print_paths(void *content);
 //
-
-
 
 t_list				*create_list_of_paths(void);
 t_list				*shortest_path_search(void);
@@ -81,7 +79,6 @@ void				add_path_in_sorting_order(t_list **allpaths, t_list *new_path);
 void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);
 
-void				ants_run(t_list *paths);
 void				run_ants(t_list *paths);
 
 void				error_processing_line(char **line);

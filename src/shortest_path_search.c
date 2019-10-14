@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 11:00:26 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 12:05:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 13:10:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void			add_links_to_queue(t_list **queue, t_list **pathstack, \
 			ft_lstpushback(queue, \
 				ft_lstnew(ft_strdup(LINKS_NAME(link)), sizeof(char *)));
 			ft_lstadd(pathstack, \
-				ft_lstnew(prev_room_init(LINKS_NAME(link), parent_name), \
+				ft_lstnew(prevroom_init(LINKS_NAME(link), parent_name), \
 					sizeof(t_prev *)));
 			if (ft_strequ(LINKS_NAME(link), END_ROOM))
 			{
