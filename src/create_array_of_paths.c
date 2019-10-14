@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:22:45 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/14 20:25:34 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/14 20:42:09 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	copy_one_path(t_list *tmp, t_way *way)
 	while (tmp)
 	{
 		way[j].room = ft_strdup(tmp->content);
-		way[j].ant	= 0;
+		way[j].ant = 0;
 		j++;
 		tmp = tmp->next;
 	}
 }
 
-t_ways**	copy_all_paths(t_list *paths)
+t_ways	**copy_all_paths(t_list *paths)
 {
 	size_t			num_of_paths;
 	t_ways			**ways;
@@ -56,7 +56,7 @@ t_ways**	copy_all_paths(t_list *paths)
 	head = paths;
 	tmp = (t_list*)paths->content;
 	num_of_paths = ft_lstsize(paths);
-	ways = (t_ways**)malloc(sizeof(t_ways*) * (num_of_paths + 1)); 
+	ways = (t_ways**)malloc(sizeof(t_ways*) * (num_of_paths + 1));
 	while (head)
 	{
 		tmp = (t_list*)head->content;
@@ -70,5 +70,27 @@ t_ways**	copy_all_paths(t_list *paths)
 		i++;
 	}
 	ways[i] = NULL;
-	return(ways);
+	return (ways);
+}
+
+void	delete_array_of_paths(t_ways **ways)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (ways[i])
+	{
+		j = 0;
+		while (j < ways[i]->length)
+		{
+			free(ways[i]->way[j].room);
+			j++;
+		}
+		free(ways[i]->way);
+		free(ways[i]);
+		i++;
+	}
+	free(ways);
 }

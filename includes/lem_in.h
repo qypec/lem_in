@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 20:26:59 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/14 20:38:55 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void				run_ants(t_list *paths);
 t_ways**			copy_all_paths(t_list *paths);
 void				calc_ants_queue(t_ways** ways, size_t num_of_paths);
 void				set_to_minus_useless_paths(t_ways **ways);
+void				delete_array_of_paths(t_ways **ways);
 
 void				print_rooms(t_ways **ways);
 

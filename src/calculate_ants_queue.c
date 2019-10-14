@@ -6,13 +6,13 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:23:57 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/14 20:24:15 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/14 20:34:33 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-size_t	fill_queue(t_ways** ways, size_t border_number, size_t diff)
+size_t	fill_queue(t_ways **ways, size_t border_number, size_t diff)
 {
 	static size_t	num_of_ants = 0;
 	size_t			ants_counter;
@@ -38,7 +38,7 @@ size_t	fill_queue(t_ways** ways, size_t border_number, size_t diff)
 	return (num_of_ants);
 }
 
-void	calc_ants_queue(t_ways** ways, size_t num_of_paths)
+void	calc_ants_queue(t_ways **ways, size_t num_of_paths)
 {
 	size_t	i;
 	size_t	num_of_ants;
