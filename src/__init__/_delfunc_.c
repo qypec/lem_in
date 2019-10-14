@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   _delfunc_.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 12:18:37 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 11:36:30 by yquaro           ###   ########.fr       */
+/*   Created: 2019/10/14 11:29:53 by yquaro            #+#    #+#             */
+/*   Updated: 2019/10/14 11:33:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_prev				*prev_room_init(char *current, char *prev_str)
+//
+void				del_elem(void *content, size_t content_size)
 {
-	t_prev			*prev;
-
-	if ((prev = (t_prev *)malloc(sizeof(t_prev))) == NULL)
-		return (NULL);
-	prev->current = ft_strdup(current);
-	prev->prev = ft_strdup(prev_str);
-	return (prev);
+	ft_strdel((char **)&content);
+	content_size = 0;
 }
 
-void				del_prevroom(void *content, size_t content_size)
+void				del_paths(void *content, size_t content_size)
 {
-	ft_strdel(&((t_prev *)(content))->current);
-	ft_strdel(&((t_prev *)(content))->prev);
-	free(content);
-	content = NULL;
+	ft_lstdel((t_list **)&content, del_elem);
+	content_size = 0;
+}
+//
+
+void				del_str_from_list(void *content, size_t content_size)
+{
+	ft_strdel((char **)&content);
 	content_size = 0;
 }

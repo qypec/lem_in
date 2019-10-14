@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/13 21:16:45 by yquaro            #+#    #+#              #
-#    Updated: 2019/10/12 18:08:09 by yquaro           ###   ########.fr        #
+#    Updated: 2019/10/14 11:45:46 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,13 @@ SOURCES = main.c parsing.c init.c what_is_line.c error_processing.c \
 
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 
-all: print $(OBJECTS)
+all: print linkage $(OBJECTS)
 
 print:
 	@echo \*\*\* Compiling lem-in
+
+linkage:
+	@make -C __init__/ all
 
 $(DIR_O)/%.o: %.c
 	$(COMPILING) $< -o $@

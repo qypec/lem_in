@@ -5,26 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/08/07 15:01:42 by yquaro            #+#    #+#              #
-#    Updated: 2019/10/14 11:38:14 by yquaro           ###   ########.fr        #
+#    Created: 2019/10/14 11:34:22 by yquaro            #+#    #+#              #
+#    Updated: 2019/10/14 11:41:46 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include includes/lem_in.mk
+include ../../includes/lem_in.mk
 
-all:
-	@make -C libft/ all
-	@mv libft/libft.a lib/libft.a
-	@make -C src/ all
-	@make -C lib/ all
+HEADER_H = -I ../../includes/
+COMPILING = $(CC) $(CFLAGS) $(HEADER_H)
 
-clean:
-	@make -C libft/ clean
-	@make -C lib/ clean
+DIR_O = ../../lib
+SOURCES = __init__graph.c __init__links.c __init__room.c _delfunc_.c \
+			graph_cpy.c
 
-fclean: clean
-	@make -C libft/ fclean
-	@make -C lib/ fclean
-	@rm -f $(EXECUTABLE)
+OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 
-re: fclean all
+all: print $(OBJECTS)
+
+print:
+	@echo \*\*\* Compiling __init__
+
+$(DIR_O)/%.o: %.c
+	$(COMPILING) $< -o $@

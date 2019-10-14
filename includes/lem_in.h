@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/12 18:06:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/14 11:44:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@
 
 # define GET_ROOM(graph, room_name) (t_room *)ft_mapvalue(graph->map, room_name)
 # define LINKS_NAME(elem) ((t_links *)((elem)->content))->name
-
-# define WITHOUT_SPACE 1
-# define WITH_SPACE 0
 
 typedef	struct		s_prev
 {
@@ -69,6 +66,7 @@ void				print_graph(t_graph *graph);
 
 t_graph				*graphinit(void);
 void				graphdel(t_graph **graph);
+t_graph				*graphcpy(t_graph *graph);
 t_room				*roominit(void);
 void				roomdel(void **room);
 t_links				*linksinit(const char *name, int wt);
