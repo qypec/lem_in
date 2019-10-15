@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 19:30:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 12:18:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 18:36:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void				parsing(void)
 	line = NULL;
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
+		ft_putendl(line);
 		if (ret == 1)
 			error_processing_line(&line);
 		if ((line_processing = what_is_this_line(&line)) == COMMENT_LINE)
@@ -50,4 +51,5 @@ void				parsing(void)
 			g_graph->end == NULL)
 		error_processing_line(&line);
 	ft_strdel(&line);
+	ft_putchar('\n');
 }

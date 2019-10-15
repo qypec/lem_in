@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:24:44 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/15 18:23:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 18:43:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	print_rooms(t_ways **ways)
 	i = 0;
 	while (ways[i] != NULL && ways[i]->ants_q != -1)
 	{
-		j = 1;
-		while (j < ways[i]->length)
+		j = ways[i]->length - 1;
+		while (j)
 		{
 			if (ways[i]->way[j].ant != 0)
 			{
@@ -29,12 +29,13 @@ void	print_rooms(t_ways **ways)
 				ft_putnbr(ways[i]->way[j].ant);
 				write(1, "-", 1);
 				ft_putstr(ways[i]->way[j].room);
-				if (j + 1 < ways[i]->length && ways[i]->way[j + 1].ant != 0)
+				if (j > 0 && ways[i]->way[j - 1].ant != 0)
 					write(1, " ", 1);
 			}
-			j++;
+			j--;
 		}
-		if (ways[i + 1] != NULL && ways[i + 1]->ants_q != -1 && ways[i]->ants_end < ways[i]->ants)
+		if (ways[i + 1] != NULL && ways[i + 1]->ants_q != -1 && \
+				ways[i]->ants_end < ways[i]->ants)
 			write(1, " ", 1);
 		i++;
 	}

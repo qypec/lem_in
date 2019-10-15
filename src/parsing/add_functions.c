@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 02:56:33 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 12:17:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 18:36:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void				add_start_room(char **line)
 {
 	if (get_next_line(0, line) < 0 || !is_room_name_line(*line))
 		error_processing_line(line);
+	ft_putendl(*line);
 	g_graph->start = ft_strsub(*line, 0, ft_strchr(*line, ' ') - *line);
 	if (ft_ismapitem(g_graph->map, g_graph->start))
 		error_processing_line(line);
@@ -48,6 +49,7 @@ void				add_end_room(char **line)
 {
 	if (get_next_line(0, line) < 0 || !is_room_name_line(*line))
 		error_processing_line(line);
+	ft_putendl(*line);
 	g_graph->end = ft_strsub(*line, 0, ft_strchr(*line, ' ') - *line);
 	if (ft_ismapitem(g_graph->map, g_graph->end))
 		error_processing_line(line);

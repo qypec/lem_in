@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/15 17:10:21 by qypec            ###   ########.fr       */
+/*   Updated: 2019/10/15 18:29:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdarg.h>
 # include <time.h>
 # include <unistd.h>
+# include "../ft_ctime/ft_ctime.h"
+# include "../ft_map/ft_map.h"
 
 /*
 ** ft_alloc
@@ -49,8 +51,6 @@ void					ft_buffdel(t_buff **buff);
 /*
 ** ft_ctime
 */
-
-# include "../ft_ctime/ft_ctime.h"
 
 char					*ft_ctime(const time_t *ttime);
 t_cdate					*ft_uctime(const time_t *ttime);
@@ -92,8 +92,6 @@ void					delfunc_lst__list(void *content, size_t content_size);
 /*
 ** ft_map
 */
-
-# include "../ft_map/ft_map.h"
 
 typedef struct			s_map
 {
