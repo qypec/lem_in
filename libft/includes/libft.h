@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 21:12:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 17:10:21 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,6 @@ char					**ft_matrdup(const char **matr);
 void					ft_strswap(char **matr, int first, int second);
 void					*ft_matrdel(char ***ret);
 size_t					ft_matrlen(const char **matr);
-
-/*
-** ft_printf
-*/
-
-# include "../ft_printf/ft_printf.h"
-
-int						ft_printf(const char *format, ...);
 
 /*
 ** other functions

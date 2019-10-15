@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
+#    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#              #
-#    Updated: 2019/10/14 21:08:44 by yquaro           ###   ########.fr        #
+#    Updated: 2019/10/15 17:07:23 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ compile_all_directory:
 	@make -C ft_map/ all
 	@make -C ft_buffer/ all
 	@make -C ft_matr/ all
-	@make -C ft_printf/ all
 	@make -C src/ all
 	@make -C lib/ all
 
@@ -38,7 +37,6 @@ clean:
 	@make -C ft_map/ clean
 	@make -C ft_buffer/ clean
 	@make -C ft_matr/ clean
-	@make -C ft_printf/ clean
 	@make -C src/ clean
 
 fclean: clean
@@ -50,7 +48,6 @@ fclean: clean
 	@make -C ft_map/ fclean
 	@make -C ft_buffer/ fclean
 	@make -C ft_matr/ fclean
-	@make -C ft_printf/ fclean
 	@make -C src/ fclean
 	@rm -f $(NAME)
 

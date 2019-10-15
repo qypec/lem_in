@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
+#    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/14 13:54:33 by yquaro            #+#    #+#              #
-#    Updated: 2019/10/08 15:37:29 by yquaro           ###   ########.fr        #
+#    Updated: 2019/10/15 17:09:13 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include ../includes/libft.mk
 
-SOURCES = ft_mapinit.c ft_mapinsert.c ft_putmap.c ft_mapvalue.c ft_mapdel.c \
+SOURCES = ft_mapinit.c ft_mapinsert.c ft_mapvalue.c ft_mapdel.c \
 			ft_mapdelind.c ft_mapdelkey.c ft_ismapitem.c ft_mapcpy.c
 OBJECTS = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SOURCES)))
 
