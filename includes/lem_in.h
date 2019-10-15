@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 17:16:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/10/14 21:15:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 13:52:40 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void				delete_link(t_list **link, const char *del_link_name);
 void				find_optimum_ways(t_list **paths, t_graph *graph);
 
 void				run_ants(t_list *paths);
-t_ways				**copy_all_paths(t_list *paths);
-void				calc_ants_queue(t_ways **ways);
+t_ways				**copy_all_paths(t_list *paths, size_t num_of_paths);
+void				calc_ants_queue(t_ways **ways, size_t num_of_paths);
 void				set_to_minus_useless_paths(t_ways **ways);
 void				delete_array_of_paths(t_ways **ways);
 

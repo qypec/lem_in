@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_array_of_paths.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:22:45 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/14 21:30:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 13:51:16 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ void	copy_one_path(t_list *tmp, t_way *way)
 	}
 }
 
-t_ways	**copy_all_paths(t_list *paths)
+t_ways	**copy_all_paths(t_list *paths, size_t num_of_paths)
 {
-	size_t			num_of_paths;
 	t_ways			**ways;
 	t_list			*tmp;
 	t_list			*head;
@@ -55,7 +54,6 @@ t_ways	**copy_all_paths(t_list *paths)
 	i = 0;
 	head = paths;
 	tmp = (t_list*)paths->content;
-	num_of_paths = ft_lstsize(paths);
 	ways = (t_ways**)malloc(sizeof(t_ways*) * (num_of_paths + 1));
 	while (head)
 	{

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:23:57 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/14 20:34:33 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:06:33 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	fill_queue(t_ways **ways, size_t border_number, size_t diff)
 	return (num_of_ants);
 }
 
-void	calc_ants_queue(t_ways **ways)
+void	calc_ants_queue(t_ways **ways, size_t num_of_paths)
 {
 	size_t	i;
 	size_t	num_of_ants;
@@ -50,6 +50,11 @@ void	calc_ants_queue(t_ways **ways)
 	{
 		if (ways[i + 1] == NULL)
 			i = 0;
+		if (num_of_paths == 1)
+		{
+			ways[i]->ants_q =  g_graph->number_of_ants;
+			return ;
+		}
 		diff = ways[i + 1]->length - ways[i]->length;
 		num_of_ants = fill_queue(ways, i + 1, diff);
 		i++;

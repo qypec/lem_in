@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_ants.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:42:51 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/14 21:38:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/10/15 15:06:53 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t	move_ants(t_ways **ways, size_t i)
 	static size_t	ant_index;
 
 	j = 1;
-	while (ways[i]->ants_q != -1)
+	while (ways[i] != NULL && ways[i]->ants_q != -1)
 	{
 		if (ways[i]->ants_q == 0 && ways[i]->ants_end != ways[i]->ants)
 		{
@@ -82,7 +82,7 @@ void	running(t_ways **ways)
 	{
 		i = move_ants(ways, i);
 		print_rooms(ways);
-		if (ways[i]->ants_q == -1)
+		if (ways[i] == NULL || ways[i]->ants_q == -1)
 			i = 0;
 		if (check_ants(ways) == 0)
 			write(1, "\n", 1);
@@ -94,9 +94,11 @@ void	running(t_ways **ways)
 void	run_ants(t_list *paths)
 {
 	t_ways			**ways;
-
-	ways = copy_all_paths(paths);
-	calc_ants_queue(ways);
+	size_t			num_of_paths;
+	
+	num_of_paths = ft_lstsize(paths);
+	ways = copy_all_paths(paths, num_of_paths);
+	calc_ants_queue(ways, num_of_paths);
 	set_to_minus_useless_paths(ways);
 	running(ways);
 	delete_array_of_paths(ways);
