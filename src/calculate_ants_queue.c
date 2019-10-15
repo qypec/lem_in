@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_ants_queue.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:23:57 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/15 18:06:52 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/15 18:15:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	calc_ants_queue(t_ways **ways, size_t num_of_paths)
 		diff = ways[i + 1]->length - ways[i]->length;
 		if (num_of_paths > 2)
 			num_of_ants = fill_queue(ways, i + 1, diff);
-		else
+		else if (num_of_paths == 2)
 			num_of_ants = fill_queue(ways, i + 2, diff);
 		i++;
 	}
