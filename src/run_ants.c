@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:42:51 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/15 15:06:53 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:10:27 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	run_ants(t_list *paths)
 {
 	t_ways			**ways;
 	size_t			num_of_paths;
-	
+
 	num_of_paths = ft_lstsize(paths);
 	ways = copy_all_paths(paths, num_of_paths);
 	calc_ants_queue(ways, num_of_paths);

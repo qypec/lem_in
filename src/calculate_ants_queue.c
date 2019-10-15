@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 20:23:57 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/10/15 15:06:33 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:09:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	calc_ants_queue(t_ways **ways, size_t num_of_paths)
 			i = 0;
 		if (num_of_paths == 1)
 		{
-			ways[i]->ants_q =  g_graph->number_of_ants;
+			ways[i]->ants_q = g_graph->number_of_ants;
 			return ;
 		}
 		diff = ways[i + 1]->length - ways[i]->length;
